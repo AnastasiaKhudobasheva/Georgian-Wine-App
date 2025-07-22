@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { StyledLink } from "@/components/StyledLink";
 import { StyledImage } from "@/components/StyledImage";
 
-// Styled components
 const ImageContainer = styled.div`
   position: relative;
   height: 15rem;
@@ -73,15 +72,15 @@ export default function WineDetailsPage() {
 
       <div>
         <strong>Grapes:</strong>{" "}
-        {wine.grape.map((g, index) => (
-          <GrapeTag key={index}>{g}</GrapeTag>
+        {wine.grape.map((grape) => (
+          <GrapeTag key={grape}>{grape}</GrapeTag>
         ))}
       </div>
 
       <div>
         <strong>Technology:</strong>{" "}
-        {wine.technology.map((t, index) => (
-          <TechTag key={index}>{t}</TechTag>
+        {wine.technology.map((technology) => (
+          <TechTag key={technology}>{technology}</TechTag>
         ))}
       </div>
 

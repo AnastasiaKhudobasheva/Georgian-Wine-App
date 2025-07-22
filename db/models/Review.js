@@ -8,12 +8,11 @@ const reviewSchema = new mongoose.Schema(
       required: true,
     },
     name: { type: String, required: true },
-    comment: { type: String, required: true },
+    review: { type: String, required: true },
   },
   { timestamps: true } // Automatically creates createdAt & updatedAt
 );
 
 // Avoid model overwrite error in dev
-const Comment =
-  mongoose.models.Comment || mongoose.model("Comment", commentSchema);
-export default Comment;
+const Review = mongoose.models.Review || mongoose.model("Review", reviewSchema);
+export default Review;
