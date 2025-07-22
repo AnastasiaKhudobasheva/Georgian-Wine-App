@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const WineSchema = new mongoose.Schema({
+const wineSchema = new mongoose.Schema({
   name: { type: String, required: true },
   winemaker: { type: String, required: true },
   grape: { type: [String], required: true },
@@ -13,4 +13,6 @@ const WineSchema = new mongoose.Schema({
   slug: { type: String, required: true, unique: true },
 });
 
-export default mongoose.models.Wine || mongoose.model("Wine", WineSchema);
+// Avoid model overwrite error in dev
+const Wine = mongoose.models.Wine || mongoose.model("Wine", wineSchema);
+export default Wine;

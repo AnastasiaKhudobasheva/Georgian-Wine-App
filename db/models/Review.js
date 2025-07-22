@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ReviewSchema = new mongoose.Schema(
+const reviewSchema = new mongoose.Schema(
   {
     wineId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -10,7 +10,10 @@ const ReviewSchema = new mongoose.Schema(
     name: { type: String, required: true },
     comment: { type: String, required: true },
   },
-  { timestamps: true }
+  { timestamps: true } // Automatically creates createdAt & updatedAt
 );
 
-export default mongoose.models.Review || mongoose.model("Review", ReviewSchema);
+// Avoid model overwrite error in dev
+const Comment =
+  mongoose.models.Comment || mongoose.model("Comment", commentSchema);
+export default Comment;
