@@ -2,35 +2,35 @@
   {
     "wineId": { "$oid": "687e4bcc66f6d520d58f99ec" },
     "name": "Nino",
-    "comment": "Absolutely loved this fizzy gem! So alive and fun, perfect for brunch.",
+    "review": "Absolutely loved this fizzy gem! So alive and fun, perfect for brunch.",
     "createdAt": { "$date": "2025-07-10T10:15:00Z" },
     "updatedAt": { "$date": "2025-07-10T10:15:00Z" }
   },
   {
     "wineId": { "$oid": "687e4bcc66f6d520d58f99ec" },
     "name": "Marcus",
-    "comment": "Great energy, slight funk, but that's Pet-Nat life. Would drink again.",
+    "review": "Great energy, slight funk, but that's Pet-Nat life. Would drink again.",
     "createdAt": { "$date": "2025-07-11T12:42:00Z" },
     "updatedAt": { "$date": "2025-07-11T12:42:00Z" }
   },
   {
     "wineId": { "$oid": "687e4bcc66f6d520d58f99ee" },
     "name": "Giorgi",
-    "comment": "Textbook Saperavi. Dark fruit, bold, and smooth. Love this vintage.",
+    "review": "Textbook Saperavi. Dark fruit, bold, and smooth. Love this vintage.",
     "createdAt": { "$date": "2025-07-09T09:00:00Z" },
     "updatedAt": { "$date": "2025-07-09T09:00:00Z" }
   },
   {
     "wineId": { "$oid": "687e4bcc66f6d520d58f99f2" },
     "name": "Anna",
-    "comment": "Really crisp and nutty. Lovely acidity and structure!",
+    "review": "Really crisp and nutty. Lovely acidity and structure!",
     "createdAt": { "$date": "2025-07-08T17:20:00Z" },
     "updatedAt": { "$date": "2025-07-08T17:20:00Z" }
   },
   {
     "wineId": { "$oid": "687e4bcc66f6d520d58f99f4" },
     "name": "Thomas",
-    "comment": "Nice oak influence, but the tannins were a bit rough for me.",
+    "review": "Nice oak influence, but the tannins were a bit rough for me.",
     "createdAt": { "$date": "2025-07-06T13:10:00Z" },
     "updatedAt": { "$date": "2025-07-06T13:10:00Z" }
   }

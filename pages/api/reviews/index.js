@@ -19,8 +19,3 @@ export default async function handler(req, res) {
     res.status(405).json({ error: "Method not allowed" });
   }
 }
-
-//wineId is expected to be passed in the query string:
-//Example request: /api/reviews?wineId=123456
-//Later the list of reviews will be rendered below the wine details on /wines/[slug]
-//via Frontend SWR call: const { data: reviews } = useSWR(`/api/reviews?wineId=${wine._id}`)
