@@ -46,7 +46,7 @@ const Headline = styled.h1`
   font-weight: 700;
   color: #374151;
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2.5rem;
   line-height: 1.2;
 `;
 
