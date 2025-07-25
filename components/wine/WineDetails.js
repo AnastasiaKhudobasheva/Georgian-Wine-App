@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import Badge from "../ui/Badge";
+import GrapeTag from "../ui/GrapeTag";
 
 const WineDetails = ({ wine }) => {
   return (
@@ -43,11 +44,8 @@ const WineDetails = ({ wine }) => {
           <Section>
             <Label>Grape Varieties</Label>
             <GrapeList>
-              {wine.grape.map((grape, index) => (
-                <GrapeTag key={grape}>
-                  {grape}
-                  {index < wine.grape.length - 1 && " "}
-                </GrapeTag>
+              {wine.grape.map((grape) => (
+                <GrapeTag key={grape} grape={grape} />
               ))}
             </GrapeList>
           </Section>
@@ -192,16 +190,6 @@ const GrapeList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-`;
-
-const GrapeTag = styled.span`
-  padding: 0.375rem 0.75rem;
-  background-color: #f3f4f6;
-  color: #374151;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 500;
 `;
 
 const TechnologyContainer = styled.div`
