@@ -1,7 +1,5 @@
-export default function HomePage() {
-  return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
-  );
+import WineList from "@/components/wine/WineList";
+
+export default function Home() {
+  return <WineList />;
 }
