@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import Badge from "./Badge";
+import Badge from "../ui/Badge";
 
 const WineCard = ({ wine }) => {
   return (

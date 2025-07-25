@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { QvevriIcon, OakBarrelIcon, PetNatIcon } from "./icons/TechIcons";
+import { QvevriIcon, OakBarrelIcon, PetNatIcon } from "../icons/TechIcons";
 
 const Badge = ({ technology }) => {
   const [showTooltip, setShowTooltip] = useState(false);
