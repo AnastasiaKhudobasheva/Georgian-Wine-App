@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { QvevriIcon, OakBarrelIcon, PetNatIcon } from "../icons/TechIcons";
+import Link from "next/link";
 
-const Badge = ({ technology }) => {
+const Badge = ({ technology, clickable = true }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const getIcon = (tech) => {
@@ -22,17 +23,37 @@ const Badge = ({ technology }) => {
   const icon = getIcon(technology);
   if (!icon) return null; // Exit early - don't render anything
 
-  return (
+  const badgeContent = (
     <BadgeContainer
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
+      clickable={clickable}
     >
       <IconWrapper>{icon}</IconWrapper>
       {showTooltip && <Tooltip>{technology}</Tooltip>}
     </BadgeContainer>
   );
+
+  // If clickable, wrap in Link - if not, just return the badge
+  if (clickable) {
+    return (
+      <BadgeLink
+        href={`/technology/${encodeURIComponent(
+          technology.toLowerCase().replace(" ", "-")
+        )}`}
+      >
+        {badgeContent}
+      </BadgeLink>
+    );
+  }
+
+  return badgeContent;
 };
 
+const BadgeLink = styled(Link)`
+  text-decoration: none;
+  display: inline-block;
+`;
 const BadgeContainer = styled.div`
   position: relative;
   display: inline-flex;
@@ -44,13 +65,17 @@ const BadgeContainer = styled.div`
   border-radius: 6px;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
-  cursor: pointer;
+  cursor: ${(props) => (props.clickable ? "pointer" : "default")};
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: #f3f4f6;
-    border-color: #7a3a0d; /* Even darker on hover */
-    transform: translateY(-1px);
+    background-color: ${(props) => (props.clickable ? "#944710" : "#f3f4f6")};
+    border-color: ${(props) => (props.clickable ? "#7a3a0d" : "#944710")};
+    transform: ${(props) => (props.clickable ? "translateY(-1px)" : "none")};
+
+    svg {
+      color: ${(props) => (props.clickable ? "white" : "#944710")};
+    }
   }
 `;
 
@@ -63,6 +88,7 @@ const IconWrapper = styled.div`
   svg {
     width: 100%;
     height: 100%;
+    transition: color 0.2s ease;
   }
 `;
 
