@@ -7,6 +7,7 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import WineDetails from "@/components/wine/WineDetails";
+import { Loading, ErrorMessage } from "@/components/ui/LoadingAndError";
 
 export default function WineDetailsPage() {
   const router = useRouter();
@@ -19,8 +20,8 @@ export default function WineDetailsPage() {
     error,
   } = useSWR(isReady ? `/api/wines/${slug}` : null);
 
-  if (!isReady || isLoading) return <h2>Loading...</h2>;
-  if (error || !wine) return <h2>Wine not found 🍷</h2>;
+  if (!isReady || isLoading) return <Loading />;
+  if (error || !wine) return <ErrorMessage />;
 
   return <WineDetails wine={wine} />;
 }
