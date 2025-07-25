@@ -1,28 +1,33 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { QvevriIcon, OakBarrelIcon, PetNatIcon } from "./icons/TechIcons";
 
 const Badge = ({ technology }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
-  const getIconPath = (tech) => {
+  const getIcon = (tech) => {
     switch (tech) {
       case "Qvevri":
-        return "/icons/qvevri.svg";
+        return <QvevriIcon />;
       case "Oak Barrel":
-        return "/icons/oak-barrel.svg";
+        return <OakBarrelIcon />;
       case "Pet-Nat":
-        return "/icons/pet-nat.svg";
+        return <PetNatIcon />;
       default:
-        return "/icons/qvevri.svg";
+        return null; // Default fallback: No icon for unknown or no technology
     }
   };
+
+  // If no valid technology, don't render anything
+  const icon = getIcon(technology);
+  if (!icon) return null; // Exit early - don't render anything
 
   return (
     <BadgeContainer
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
     >
-      <IconImage src={getIconPath(technology)} alt={technology} />
+      <IconWrapper>{icon}</IconWrapper>
       {showTooltip && <Tooltip>{technology}</Tooltip>}
     </BadgeContainer>
   );
@@ -33,9 +38,9 @@ const BadgeContainer = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.375rem; /* Smaller padding = less white space */
+  padding: 0.375rem;
   background-color: #f9fafb;
-  border: 1px solid #944710; /* Updated border to match darker color */
+  border: 1px solid #944710;
   border-radius: 6px;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
@@ -44,17 +49,21 @@ const BadgeContainer = styled.div`
 
   &:hover {
     background-color: #f3f4f6;
-    border-color: #7a3a0d; /* Even darker on hover */
+    border-color: #7a3a0d;
     transform: translateY(-1px);
   }
 `;
 
-const IconImage = styled.img`
-  width: 24px; /* Bigger icons! */
-  height: 20px;
-  filter: brightness(0) saturate(100%) invert(26%) sepia(67%) saturate(1854%)
-    hue-rotate(15deg) brightness(97%) contrast(89%);
-  /* This CSS filter converts any color SVG to darker color #944710 */
+const IconWrapper = styled.div`
+  width: 24px;
+  height: 24px;
+  color: #944710; /* sets the SVG color via currentColor! */
+
+  /* The SVG inherits this color automatically*/
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const Tooltip = styled.div`
@@ -81,6 +90,11 @@ const Tooltip = styled.div`
     transform: translateX(-50%);
     border: 4px solid transparent;
     border-top-color: #374151;
+  }
+
+  /* HIDE TOOLTIPS ON MOBILE*/
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 

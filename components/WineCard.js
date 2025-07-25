@@ -13,6 +13,7 @@ const WineCard = ({ wine }) => {
             src={wine.imageUrl}
             alt={wine.name}
             fill
+            priority={true} //performance optimization to the first image for faster loading
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </ImageContainer>
