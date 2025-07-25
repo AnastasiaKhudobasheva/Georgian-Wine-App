@@ -54,7 +54,12 @@ const BadgeLink = styled(Link)`
   text-decoration: none;
   display: inline-block;
 `;
-const BadgeContainer = styled.div`
+
+//keeping "clickable" for styling logic and not passing it to DOM:
+
+const BadgeContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => prop !== "clickable",
+})`
   position: relative;
   display: inline-flex;
   align-items: center;
