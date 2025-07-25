@@ -38,9 +38,9 @@ const BadgeContainer = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.375rem;
+  padding: 0.375rem; /* Smaller padding = less white space */
   background-color: #f9fafb;
-  border: 1px solid #944710;
+  border: 1px solid #944710; /* Updated border to match darker color */
   border-radius: 6px;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
@@ -49,7 +49,7 @@ const BadgeContainer = styled.div`
 
   &:hover {
     background-color: #f3f4f6;
-    border-color: #7a3a0d;
+    border-color: #7a3a0d; /* Even darker on hover */
     transform: translateY(-1px);
   }
 `;
