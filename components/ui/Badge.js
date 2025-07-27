@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { QvevriIcon, OakBarrelIcon, PetNatIcon } from "../icons/TechIcons";
-import Link from "next/link";
 
-const Badge = ({ technology, clickable = true }) => {
+const Badge = ({ technology, clickable = false }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const getIcon = (tech) => {
@@ -23,43 +22,21 @@ const Badge = ({ technology, clickable = true }) => {
   const icon = getIcon(technology);
   if (!icon) return null; // Exit early - don't render anything
 
-  const badgeContent = (
+  return (
     <BadgeContainer
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
-      clickable={clickable}
+      $clickable={clickable}
     >
       <IconWrapper>{icon}</IconWrapper>
       {showTooltip && <Tooltip>{technology}</Tooltip>}
     </BadgeContainer>
   );
-
-  // If clickable, wrap in Link - if not, just return the badge
-  if (clickable) {
-    return (
-      <BadgeLink
-        href={`/technology/${encodeURIComponent(
-          technology.toLowerCase().replace(" ", "-")
-        )}`}
-      >
-        {badgeContent}
-      </BadgeLink>
-    );
-  }
-
-  return badgeContent;
 };
-
-const BadgeLink = styled(Link)`
-  text-decoration: none;
-  display: inline-block;
-`;
 
 //keeping "clickable" for styling logic and not passing it to DOM:
 
-const BadgeContainer = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "clickable",
-})`
+const BadgeContainer = styled.div`
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -70,16 +47,16 @@ const BadgeContainer = styled.div.withConfig({
   border-radius: 6px;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
-  cursor: ${(props) => (props.clickable ? "pointer" : "default")};
+  cursor: ${(props) => (props.$clickable ? "pointer" : "default")};
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: ${(props) => (props.clickable ? "#944710" : "#f3f4f6")};
-    border-color: ${(props) => (props.clickable ? "#7a3a0d" : "#944710")};
-    transform: ${(props) => (props.clickable ? "translateY(-1px)" : "none")};
+    background-color: ${(props) => (props.$clickable ? "#944710" : "#f3f4f6")};
+    border-color: ${(props) => (props.$clickable ? "#7a3a0d" : "#944710")};
+    transform: ${(props) => (props.$clickable ? "translateY(-1px)" : "none")};
 
     svg {
-      color: ${(props) => (props.clickable ? "white" : "#944710")};
+      color: ${(props) => (props.$clickable ? "white" : "#944710")};
     }
   }
 `;

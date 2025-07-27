@@ -10,20 +10,16 @@ const WineDetails = ({ wine }) => {
       <BackButton href="/">← Back to Wine Collection</BackButton>
 
       <ContentLayout>
-        {/* Left Side - Wine Image */}
         <ImageSection>
-          <ImageContainer>
-            <WineImage
-              src={wine.imageUrl}
-              alt={wine.name}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </ImageContainer>
+          <WineImage
+            src={wine.imageUrl}
+            alt={wine.name}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
         </ImageSection>
 
-        {/* Right Side - Wine Information */}
         <InfoSection>
           <WineName>{wine.name}</WineName>
 
@@ -112,9 +108,6 @@ const ContentLayout = styled.div`
 const ImageSection = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 400px;
