@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { QvevriIcon, OakBarrelIcon, PetNatIcon } from "../icons/TechIcons";
 
-const Badge = ({ technology }) => {
+const Badge = ({ technology, clickable = false }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const getIcon = (tech) => {
@@ -26,12 +26,15 @@ const Badge = ({ technology }) => {
     <BadgeContainer
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
+      $clickable={clickable}
     >
       <IconWrapper>{icon}</IconWrapper>
       {showTooltip && <Tooltip>{technology}</Tooltip>}
     </BadgeContainer>
   );
 };
+
+//keeping "clickable" for styling logic and not passing it to DOM:
 
 const BadgeContainer = styled.div`
   position: relative;
@@ -44,13 +47,17 @@ const BadgeContainer = styled.div`
   border-radius: 6px;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
-  cursor: pointer;
+  cursor: ${(props) => (props.$clickable ? "pointer" : "default")};
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: #f3f4f6;
-    border-color: #7a3a0d; /* Even darker on hover */
-    transform: translateY(-1px);
+    background-color: ${(props) => (props.$clickable ? "#944710" : "#f3f4f6")};
+    border-color: ${(props) => (props.$clickable ? "#7a3a0d" : "#944710")};
+    transform: ${(props) => (props.$clickable ? "translateY(-1px)" : "none")};
+
+    svg {
+      color: ${(props) => (props.$clickable ? "white" : "#944710")};
+    }
   }
 `;
 
@@ -63,6 +70,7 @@ const IconWrapper = styled.div`
   svg {
     width: 100%;
     height: 100%;
+    transition: color 0.2s ease;
   }
 `;
 

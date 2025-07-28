@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import useSWR from "swr";
 import WineCard from "./WineCard";
+import { Loading, ErrorMessage } from "@/components/ui/LoadingAndError";
 
 const WineList = () => {
   // Fetch all wines from API
   const { data: wines, error, isLoading } = useSWR("/api/wines");
 
   // Loading state
-  if (isLoading)
-    return <LoadingMessage>Loading Georgian wines...</LoadingMessage>;
+  if (isLoading) return <Loading message="Loading Georgian wines..." />;
 
   // Error state
   if (error)
-    return <ErrorMessage>Failed to load wines. Please try again.</ErrorMessage>;
+    return <ErrorMessage message="Failed to load wines. Please try again." />;
 
   // No wines found
   if (!wines || wines.length === 0) {
@@ -79,24 +79,6 @@ const WineGrid = styled.div`
     gap: 2rem;
     margin-bottom: 1rem;
   }
-`;
-
-const LoadingMessage = styled.div`
-  text-align: center;
-  font-size: 1.125rem;
-  color: #6b7280;
-  padding: 4rem 2rem;
-`;
-
-const ErrorMessage = styled.div`
-  text-align: center;
-  font-size: 1.125rem;
-  color: #dc2626;
-  padding: 4rem 2rem;
-  background-color: #fef2f2;
-  border: 1px solid #fecaca;
-  border-radius: 8px;
-  margin: 2rem;
 `;
 
 export default WineList;
