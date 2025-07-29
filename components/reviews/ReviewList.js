@@ -51,6 +51,9 @@ const ReviewList = ({ reviews, isLoading = false, error }) => {
 };
 
 const ReviewSection = styled.section`
+  max-width: 1000px;
+  margin: 3rem auto 0 auto;
+  padding: 2rem 1rem 0 1rem;
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid #e5e7eb;
