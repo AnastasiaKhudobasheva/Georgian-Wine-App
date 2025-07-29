@@ -1,19 +1,33 @@
 import styled from "styled-components";
 import ReviewCard from "./ReviewCard";
 import { Loading, ErrorMessage } from "../ui/LoadingAndError";
+import useSWR from "swr";
 
-const ReviewList = ({ reviews, isLoading = false, error }) => {
+const ReviewList = ({ wineId }) => {
+  const {
+    data: reviews,
+    isLoading,
+    error,
+  } = useSWR(wineId ? `/api/reviews?wineId=${wineId}` : null);
+
   if (error) {
     return (
-      <ErrorMessage
-        title="Reviews Not Available"
-        message="Unable to load reviews for this wine. Please try again later."
-      />
+      <ReviewSection>
+        <ErrorMessage
+          title="Reviews Not Available"
+          message="Unable to load reviews for this wine. Please try again later."
+        />
+      </ReviewSection>
     );
   }
 
   if (isLoading) {
-    return <Loading message="Loading reviews..." />;
+    return (
+      <ReviewSection>
+        <SectionTitle>Community Reviews</SectionTitle>
+        <Loading message="Loading reviews..." />
+      </ReviewSection>
+    );
   }
 
   if (!reviews || reviews.length === 0) {
@@ -30,10 +44,6 @@ const ReviewList = ({ reviews, isLoading = false, error }) => {
     );
   }
 
-  const sortedReviews = [...reviews].sort(
-    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  );
-
   return (
     <ReviewSection>
       <SectionTitle>Community Reviews</SectionTitle>
@@ -42,7 +52,7 @@ const ReviewList = ({ reviews, isLoading = false, error }) => {
       </ReviewCount>
 
       <ReviewContainer>
-        {sortedReviews.map((review) => (
+        {reviews.map((review) => (
           <ReviewCard key={review._id} review={review} />
         ))}
       </ReviewContainer>
@@ -54,8 +64,6 @@ const ReviewSection = styled.section`
   max-width: 1000px;
   margin: 3rem auto 0 auto;
   padding: 2rem 1rem 0 1rem;
-  margin-top: 3rem;
-  padding-top: 2rem;
   border-top: 1px solid #e5e7eb;
 `;
 
@@ -79,13 +87,6 @@ const ReviewContainer = styled.div`
   gap: 1rem;
 `;
 
-const LoadingMessage = styled.div`
-  text-align: center;
-  padding: 3rem 1rem;
-  color: #6b7280;
-  font-size: 1.125rem;
-`;
-
 const EmptyState = styled.div`
   text-align: center;
   padding: 3rem 1rem;
@@ -107,3 +108,51 @@ const EmptyMessage = styled.p`
 `;
 
 export default ReviewList;
+
+// const ReviewList = ({ reviews, isLoading = false, error }) => {
+//   if (error) {
+//     return (
+//       <ErrorMessage
+//         title="Reviews Not Available"
+//         message="Unable to load reviews for this wine. Please try again later."
+//       />
+//     );
+//   }
+
+//   if (isLoading) {
+//     return <Loading message="Loading reviews..." />;
+//   }
+
+//   if (!reviews || reviews.length === 0) {
+//     return (
+//       <ReviewSection>
+//         <SectionTitle>Community Reviews</SectionTitle>
+//         <EmptyState>
+//           <EmptyIcon>🍷</EmptyIcon>
+//           <EmptyMessage>
+//             No reviews yet. Be the first to share your thoughts!
+//           </EmptyMessage>
+//         </EmptyState>
+//       </ReviewSection>
+//     );
+//   }
+
+//   const sortedReviews = [...reviews].sort(
+//     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+//   );
+
+//   return (
+//     <ReviewSection>
+//       <SectionTitle>Community Reviews</SectionTitle>
+//       <ReviewCount>
+//         {reviews.length} review{reviews.length !== 1 ? "s" : ""}
+//       </ReviewCount>
+
+//       <ReviewContainer>
+//         {sortedReviews.map((review) => (
+//           <ReviewCard key={review._id} review={review} />
+//         ))}
+//       </ReviewContainer>
+//     </ReviewSection>
+//   );
+// };

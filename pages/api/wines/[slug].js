@@ -2,7 +2,6 @@
 
 import dbConnect from "@/db/connect";
 import Wine from "@/db/models/Wine";
-import Review from "@/db/models/Review";
 
 export default async function handler(req, res) {
   await dbConnect();
@@ -11,7 +10,7 @@ export default async function handler(req, res) {
 
   if (req.method === "GET") {
     try {
-      const wine = await Wine.findOne({ slug }).populate("reviews");
+      const wine = await Wine.findOne({ slug });
 
       if (!wine) {
         return res.status(404).json({ error: "Wine not found" });

@@ -28,7 +28,7 @@ export default function WineDetailsPage() {
   return (
     <>
       <WineDetails wine={wine} />
-      <ReviewList reviews={wine.reviews || []} />
+      <ReviewList wineId={wine._id} />
     </>
   );
 }
