@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import WineDetails from "@/components/wine/WineDetails";
 import { Loading, ErrorMessage } from "@/components/ui/LoadingAndError";
+import ReviewList from "@/components/reviews/ReviewList";
 
 export default function WineDetailsPage() {
   const router = useRouter();
@@ -24,5 +25,10 @@ export default function WineDetailsPage() {
     return <ErrorMessage />;
   }
 
-  return <WineDetails wine={wine} />;
+  return (
+    <>
+      <WineDetails wine={wine} />
+      <ReviewList wineId={wine._id} />
+    </>
+  );
 }

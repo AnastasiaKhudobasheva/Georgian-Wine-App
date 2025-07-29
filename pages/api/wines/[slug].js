@@ -11,6 +11,7 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const wine = await Wine.findOne({ slug });
+
       if (!wine) {
         return res.status(404).json({ error: "Wine not found" });
       }
