@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import WineDetails from "@/components/wine/WineDetails";
 import { Loading, ErrorMessage } from "@/components/ui/LoadingAndError";
+import ReviewCard from "@/components/reviews/ReviewCard";
 
 export default function WineDetailsPage() {
   const router = useRouter();
@@ -24,5 +25,17 @@ export default function WineDetailsPage() {
     return <ErrorMessage />;
   }
 
-  return <WineDetails wine={wine} />;
+  const testReview = {
+    name: "Nino",
+    review:
+      "Absolutely loved this fizzy gem! So alive and fun, perfect for brunch.",
+    createdAt: "2025-07-10T10:15:00Z",
+  };
+
+  return (
+    <>
+      <WineDetails wine={wine} />
+      <ReviewCard review={testReview} />
+    </>
+  );
 }
