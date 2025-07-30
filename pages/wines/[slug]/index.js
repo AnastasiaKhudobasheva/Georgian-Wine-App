@@ -3,6 +3,7 @@ import useSWR from "swr";
 import WineDetails from "@/components/wine/WineDetails";
 import { Loading, ErrorMessage } from "@/components/ui/LoadingAndError";
 import ReviewList from "@/components/reviews/ReviewList";
+import ReviewForm from "@/components/reviews/ReviewForm";
 
 export default function WineDetailsPage() {
   const router = useRouter();
@@ -25,10 +26,26 @@ export default function WineDetailsPage() {
     return <ErrorMessage />;
   }
 
+  //TEST
+  const handleSuccess = () => {
+    console.log("Review submitted successfully!");
+  };
+
+  const handleCancel = () => {
+    console.log("Form cancelled!");
+  };
+  //TEST
+
   return (
     <>
       <WineDetails wine={wine} />
       <ReviewList wineId={wine._id} />
+      {/* TEMPORARY TEST */}
+      <ReviewForm
+        wineId={wine._id}
+        onSuccess={handleSuccess}
+        onCancel={handleCancel}
+      />
     </>
   );
 }
