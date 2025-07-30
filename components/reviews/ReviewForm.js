@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { toast } from "sonner";
+import { Loading } from "../ui/LoadingAndError";
 
 const ReviewForm = ({ wineId, onSuccess, onCancel }) => {
   const [name, setName] = useState("");
@@ -38,16 +40,21 @@ const ReviewForm = ({ wineId, onSuccess, onCancel }) => {
       if (response.ok) {
         setName("");
         setReview("");
-        onSuccess();
+        toast.success("Review submitted successfully! 🍷");
+        onSuccess(); //tells parent it succeeded
       } else {
-        alert("Failed to submit review");
+        toast.error("Failed to submit review. Please try again");
       }
     } catch (error) {
-      alert("Error submitting review");
+      toast.error("Network error. Please try again");
     }
 
     setIsSubmitting(false);
   };
+
+  if (isSubmitting) {
+    return <Loading message="Submitting your review..." />;
+  }
 
   return (
     <FormContainer>
