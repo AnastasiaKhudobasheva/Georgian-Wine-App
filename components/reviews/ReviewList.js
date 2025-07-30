@@ -4,6 +4,7 @@ import { Loading, ErrorMessage } from "../ui/LoadingAndError";
 import useSWR from "swr";
 import { useState } from "react";
 import ReviewForm from "./ReviewForm";
+import { toast } from "sonner";
 
 const ReviewList = ({ wineId }) => {
   const [showForm, setShowForm] = useState(false);
@@ -15,13 +16,32 @@ const ReviewList = ({ wineId }) => {
     mutate,
   } = useSWR(wineId ? `/api/reviews?wineId=${wineId}` : null);
 
-  const handleFormSuccess = () => {
-    setShowForm(false); // hide form
-    mutate(); // refresh reviews data
+  const handleFormSubmit = async (formData) => {
+    try {
+      const response = await fetch("/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          wineId,
+          name: formData.name,
+          review: formData.review,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Review submitted successfully! 🍷");
+        setShowForm(false);
+        mutate(); // refresh reviews
+      } else {
+        toast.error("Failed to submit review. Please try again");
+      }
+    } catch (error) {
+      toast.error("Network error. Please try again");
+    }
   };
 
   const handleFormCancel = () => {
-    setShowForm(false); // hide form
+    setShowForm(false);
   };
 
   if (error) {
@@ -29,74 +49,46 @@ const ReviewList = ({ wineId }) => {
       <ReviewSection>
         <ErrorMessage
           title="Reviews Not Available"
-          message="Unable to load reviews for this wine. Please try again later."
+          message="Unable to load reviews for this wine. Please try again later"
         />
       </ReviewSection>
     );
   }
 
-  if (isLoading) {
-    return (
-      <ReviewSection>
-        <SectionTitle>Community Reviews</SectionTitle>
-        <Loading message="Loading reviews..." />
-      </ReviewSection>
-    );
-  }
+  const hasNoReviews = !reviews || reviews.length === 0;
 
-  if (!reviews || reviews.length === 0) {
-    return (
-      <ReviewSection>
-        <SectionTitle>Community Reviews</SectionTitle>
+  return (
+    <ReviewSection>
+      <SectionTitle>Community Reviews</SectionTitle>
+
+      {isLoading ? (
+        <Loading message="Loading reviews..." />
+      ) : hasNoReviews ? (
         <EmptyState>
           <EmptyIcon>🍷</EmptyIcon>
           <EmptyMessage>
             No reviews yet. Be the first to share your thoughts!
           </EmptyMessage>
         </EmptyState>
+      ) : (
+        <>
+          <ReviewCount>
+            {reviews.length} review{reviews.length !== 1 ? "s" : ""}
+          </ReviewCount>
+          <ReviewContainer>
+            {reviews.map((review) => (
+              <ReviewCard key={review._id} review={review} />
+            ))}
+          </ReviewContainer>
+        </>
+      )}
 
-        {!showForm && (
-          <AddReviewButton onClick={() => setShowForm(true)}>
-            Add a Review
-          </AddReviewButton>
-        )}
-
-        {showForm && (
-          <ReviewForm
-            wineId={wineId}
-            onSuccess={handleFormSuccess}
-            onCancel={handleFormCancel}
-          />
-        )}
-      </ReviewSection>
-    );
-  }
-
-  return (
-    <ReviewSection>
-      <SectionTitle>Community Reviews</SectionTitle>
-      <ReviewCount>
-        {reviews.length} review{reviews.length !== 1 ? "s" : ""}
-      </ReviewCount>
-
-      <ReviewContainer>
-        {reviews.map((review) => (
-          <ReviewCard key={review._id} review={review} />
-        ))}
-      </ReviewContainer>
-
-      {!showForm && (
+      {showForm ? (
+        <ReviewForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
+      ) : (
         <AddReviewButton onClick={() => setShowForm(true)}>
           Add a Review
         </AddReviewButton>
-      )}
-
-      {showForm && (
-        <ReviewForm
-          wineId={wineId}
-          onSuccess={handleFormSuccess}
-          onCancel={handleFormCancel}
-        />
       )}
     </ReviewSection>
   );

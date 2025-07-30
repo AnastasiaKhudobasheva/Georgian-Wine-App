@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { toast } from "sonner";
-import { Loading } from "../ui/LoadingAndError";
 
-const ReviewForm = ({ wineId, onSuccess, onCancel }) => {
+const ReviewForm = ({ onSubmit, onCancel }) => {
   const [name, setName] = useState("");
   const [review, setReview] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -11,7 +9,7 @@ const ReviewForm = ({ wineId, onSuccess, onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // validation
+    // simple validation
     if (!name.trim() || !review.trim()) {
       alert("Please fill in all fields");
       return;
@@ -22,40 +20,21 @@ const ReviewForm = ({ wineId, onSuccess, onCancel }) => {
       return;
     }
 
+    // IMPROVEMENT: just collect data and pass it up
     setIsSubmitting(true);
 
-    try {
-      const response = await fetch("/api/reviews", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          wineId,
-          name: name.trim(),
-          review: review.trim(),
-        }),
-      });
+    await onSubmit({
+      name: name.trim(),
+      review: review.trim(),
+    });
 
-      if (response.ok) {
-        setName("");
-        setReview("");
-        toast.success("Review submitted successfully! 🍷");
-        onSuccess(); //tells parent it succeeded
-      } else {
-        toast.error("Failed to submit review. Please try again");
-      }
-    } catch (error) {
-      toast.error("Network error. Please try again");
-    }
-
+    // IMPROVEMENT: parent controls success/error
+    setName("");
+    setReview("");
     setIsSubmitting(false);
   };
 
-  if (isSubmitting) {
-    return <Loading message="Submitting your review..." />;
-  }
-
+  // IMPROVEMENT: NO early return! loading state INSIDE form
   return (
     <FormContainer>
       <FormTitle>Your Review</FormTitle>
@@ -69,6 +48,7 @@ const ReviewForm = ({ wineId, onSuccess, onCancel }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
+            disabled={isSubmitting} // disable during submission
           />
         </InputGroup>
 
@@ -81,12 +61,13 @@ const ReviewForm = ({ wineId, onSuccess, onCancel }) => {
             placeholder="Share your thoughts about this wine..."
             rows={4}
             maxLength={500}
+            disabled={isSubmitting} // disable during submission
           />
           <CharacterCounter>{review.length} / 500</CharacterCounter>
         </InputGroup>
 
         <ButtonGroup>
-          <button type="button" onClick={onCancel}>
+          <button type="button" onClick={onCancel} disabled={isSubmitting}>
             Cancel
           </button>
           <button type="submit" disabled={isSubmitting}>
