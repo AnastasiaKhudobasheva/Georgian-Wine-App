@@ -2,60 +2,94 @@ import styled from "styled-components";
 import ReviewCard from "./ReviewCard";
 import { Loading, ErrorMessage } from "../ui/LoadingAndError";
 import useSWR from "swr";
+import { useState } from "react";
+import ReviewForm from "./ReviewForm";
+import { toast } from "sonner";
 
 const ReviewList = ({ wineId }) => {
+  const [showForm, setShowForm] = useState(false);
+
   const {
     data: reviews,
     isLoading,
     error,
+    mutate,
   } = useSWR(wineId ? `/api/reviews?wineId=${wineId}` : null);
+
+  const handleFormSubmit = async (formData) => {
+    try {
+      const response = await fetch("/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          wineId,
+          name: formData.name,
+          review: formData.review,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Review submitted successfully! 🍷");
+        setShowForm(false);
+        mutate(); // refresh reviews
+      } else {
+        toast.error("Failed to submit review. Please try again");
+      }
+    } catch (error) {
+      toast.error("Network error. Please try again");
+    }
+  };
+
+  const handleFormCancel = () => {
+    setShowForm(false);
+  };
 
   if (error) {
     return (
       <ReviewSection>
         <ErrorMessage
           title="Reviews Not Available"
-          message="Unable to load reviews for this wine. Please try again later."
+          message="Unable to load reviews for this wine. Please try again later"
         />
       </ReviewSection>
     );
   }
 
-  if (isLoading) {
-    return (
-      <ReviewSection>
-        <SectionTitle>Community Reviews</SectionTitle>
-        <Loading message="Loading reviews..." />
-      </ReviewSection>
-    );
-  }
+  const hasNoReviews = !reviews || reviews.length === 0;
 
-  if (!reviews || reviews.length === 0) {
-    return (
-      <ReviewSection>
-        <SectionTitle>Community Reviews</SectionTitle>
+  return (
+    <ReviewSection>
+      <SectionTitle>Community Reviews</SectionTitle>
+
+      {isLoading ? (
+        <Loading message="Loading reviews..." />
+      ) : hasNoReviews ? (
         <EmptyState>
           <EmptyIcon>🍷</EmptyIcon>
           <EmptyMessage>
             No reviews yet. Be the first to share your thoughts!
           </EmptyMessage>
         </EmptyState>
-      </ReviewSection>
-    );
-  }
+      ) : (
+        <>
+          <ReviewCount>
+            {reviews.length} review{reviews.length !== 1 ? "s" : ""}
+          </ReviewCount>
+          <ReviewContainer>
+            {reviews.map((review) => (
+              <ReviewCard key={review._id} review={review} />
+            ))}
+          </ReviewContainer>
+        </>
+      )}
 
-  return (
-    <ReviewSection>
-      <SectionTitle>Community Reviews</SectionTitle>
-      <ReviewCount>
-        {reviews.length} review{reviews.length !== 1 ? "s" : ""}
-      </ReviewCount>
-
-      <ReviewContainer>
-        {reviews.map((review) => (
-          <ReviewCard key={review._id} review={review} />
-        ))}
-      </ReviewContainer>
+      {showForm ? (
+        <ReviewForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
+      ) : (
+        <AddReviewButton onClick={() => setShowForm(true)}>
+          Add a Review
+        </AddReviewButton>
+      )}
     </ReviewSection>
   );
 };
@@ -107,52 +141,25 @@ const EmptyMessage = styled.p`
   margin: 0 auto;
 `;
 
+const AddReviewButton = styled.button`
+  display: block;
+  margin: 2rem auto;
+  padding: 0.75rem 2rem;
+  background: #944710;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #7a3a0d;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(148, 71, 16, 0.3);
+  }
+`;
+
 export default ReviewList;
-
-// const ReviewList = ({ reviews, isLoading = false, error }) => {
-//   if (error) {
-//     return (
-//       <ErrorMessage
-//         title="Reviews Not Available"
-//         message="Unable to load reviews for this wine. Please try again later."
-//       />
-//     );
-//   }
-
-//   if (isLoading) {
-//     return <Loading message="Loading reviews..." />;
-//   }
-
-//   if (!reviews || reviews.length === 0) {
-//     return (
-//       <ReviewSection>
-//         <SectionTitle>Community Reviews</SectionTitle>
-//         <EmptyState>
-//           <EmptyIcon>🍷</EmptyIcon>
-//           <EmptyMessage>
-//             No reviews yet. Be the first to share your thoughts!
-//           </EmptyMessage>
-//         </EmptyState>
-//       </ReviewSection>
-//     );
-//   }
-
-//   const sortedReviews = [...reviews].sort(
-//     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-//   );
-
-//   return (
-//     <ReviewSection>
-//       <SectionTitle>Community Reviews</SectionTitle>
-//       <ReviewCount>
-//         {reviews.length} review{reviews.length !== 1 ? "s" : ""}
-//       </ReviewCount>
-
-//       <ReviewContainer>
-//         {sortedReviews.map((review) => (
-//           <ReviewCard key={review._id} review={review} />
-//         ))}
-//       </ReviewContainer>
-//     </ReviewSection>
-//   );
-// };

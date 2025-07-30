@@ -3,6 +3,7 @@ import useSWR from "swr";
 import WineDetails from "@/components/wine/WineDetails";
 import { Loading, ErrorMessage } from "@/components/ui/LoadingAndError";
 import ReviewList from "@/components/reviews/ReviewList";
+import ReviewForm from "@/components/reviews/ReviewForm";
 
 export default function WineDetailsPage() {
   const router = useRouter();
