@@ -26,26 +26,10 @@ export default function WineDetailsPage() {
     return <ErrorMessage />;
   }
 
-  //TEST
-  const handleSuccess = () => {
-    console.log("Review submitted successfully!");
-  };
-
-  const handleCancel = () => {
-    console.log("Form cancelled!");
-  };
-  //TEST
-
   return (
     <>
       <WineDetails wine={wine} />
       <ReviewList wineId={wine._id} />
-      {/* TEMPORARY TEST */}
-      <ReviewForm
-        wineId={wine._id}
-        onSuccess={handleSuccess}
-        onCancel={handleCancel}
-      />
     </>
   );
 }

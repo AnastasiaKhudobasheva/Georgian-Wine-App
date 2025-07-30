@@ -162,8 +162,9 @@ const ButtonGroup = styled.div`
   button {
     padding: 0.75rem 1.5rem;
     border-radius: 6px;
+    font-family: system-ui, -apple-system, sans-serif;
     font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
 
