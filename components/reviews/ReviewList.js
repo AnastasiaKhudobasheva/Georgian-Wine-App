@@ -21,11 +21,7 @@ const ReviewList = ({ wineId }) => {
       const response = await fetch("/api/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          wineId,
-          name: formData.name,
-          review: formData.review,
-        }),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -60,10 +56,7 @@ const ReviewList = ({ wineId }) => {
       const response = await fetch(`/api/reviews/${reviewId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          review: formData.review,
-        }),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {

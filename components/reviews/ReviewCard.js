@@ -29,6 +29,7 @@ const ReviewCard = ({ review, onReviewUpdate }) => {
     return (
       <ReviewForm
         initialData={{ name: review.name, review: review.review }}
+        isEditMode={true}
         submitText="Save Changes"
         onSubmit={handleEditSubmit}
         onCancel={handleEditCancel}

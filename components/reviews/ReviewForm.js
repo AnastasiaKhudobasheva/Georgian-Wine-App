@@ -6,6 +6,7 @@ const ReviewForm = ({
   onCancel,
   initialData = null,
   submitText = "Submit",
+  isEditMode = false,
 }) => {
   const [name, setName] = useState(initialData?.name || "");
   const [review, setReview] = useState(initialData?.review || "");
@@ -16,13 +17,13 @@ const ReviewForm = ({
 
     // simple validation
     if (!name.trim()) {
-      alert(initialData ? "Please keep your name" : "Please enter your name");
+      alert(isEditMode ? "Please keep your name" : "Please enter your name");
       return;
     }
 
     if (!review.trim()) {
       alert(
-        initialData ? "Please keep your review text" : "Please write a review"
+        isEditMode ? "Please keep your review text" : "Please write a review"
       );
       return;
     }
@@ -40,17 +41,16 @@ const ReviewForm = ({
     });
 
     // only clear form if creating new review (not editing)
-    if (!initialData) {
+    if (!isEditMode) {
       setName("");
       setReview("");
     }
     setIsSubmitting(false);
   };
 
-  // IMPROVEMENT: NO early return! loading state INSIDE form
   return (
     <FormContainer>
-      <FormTitle>{initialData ? "Edit Review" : "Your Review"}</FormTitle>
+      <FormTitle>{isEditMode ? "Edit Review" : "Your Review"}</FormTitle>
 
       <form onSubmit={handleSubmit}>
         <InputGroup>
@@ -93,14 +93,12 @@ const ReviewForm = ({
 };
 
 const FormContainer = styled.div`
-  /* ← REMOVE max-width and margin when used inline */
   padding: 2rem;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 
-  /* ← ADD: Remove extra margin when used inline */
   margin: 0;
 `;
 
