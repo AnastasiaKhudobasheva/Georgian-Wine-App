@@ -55,6 +55,28 @@ const ReviewList = ({ wineId }) => {
     );
   }
 
+  const handleReviewUpdate = async (reviewId, formData) => {
+    try {
+      const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          review: formData.review,
+        }),
+      });
+
+      if (response.ok) {
+        toast.success("Review updated successfully! 🍷");
+        mutate();
+      } else {
+        toast.error("Failed to update review. Please try again");
+      }
+    } catch (error) {
+      toast.error("Network error. Please try again");
+    }
+  };
+
   const hasNoReviews = !reviews || reviews.length === 0;
 
   return (
@@ -77,7 +99,11 @@ const ReviewList = ({ wineId }) => {
           </ReviewCount>
           <ReviewContainer>
             {reviews.map((review) => (
-              <ReviewCard key={review._id} review={review} />
+              <ReviewCard
+                key={review._id}
+                review={review}
+                onReviewUpdate={handleReviewUpdate}
+              />
             ))}
           </ReviewContainer>
         </>
