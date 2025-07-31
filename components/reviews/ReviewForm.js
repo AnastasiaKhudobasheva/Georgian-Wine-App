@@ -16,10 +16,16 @@ const ReviewForm = ({
 
     // simple validation
     if (!name.trim() || !review.trim()) {
-      alert("Please fill in all fields");
+      alert(initialData ? "Please keep your name" : "Please enter your name");
       return;
     }
 
+    if (!review.trim()) {
+      alert(
+        initialData ? "Please keep your review text" : "Please write a review"
+      );
+      return;
+    }
     if (review.length > 500) {
       alert("Review must be 500 characters or less");
       return;
