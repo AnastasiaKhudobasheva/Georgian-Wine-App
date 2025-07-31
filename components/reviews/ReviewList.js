@@ -84,7 +84,9 @@ const ReviewList = ({ wineId }) => {
       )}
 
       {showForm ? (
-        <ReviewForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
+        <FormWrapper>
+          <ReviewForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
+        </FormWrapper>
       ) : (
         <AddReviewButton onClick={() => setShowForm(true)}>
           Add a Review
@@ -93,6 +95,10 @@ const ReviewList = ({ wineId }) => {
     </ReviewSection>
   );
 };
+
+const FormWrapper = styled.div`
+  margin-bottom: 4rem; /* adds space below the form */
+`;
 
 const ReviewSection = styled.section`
   max-width: 1000px;

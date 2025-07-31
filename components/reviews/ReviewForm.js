@@ -87,13 +87,15 @@ const ReviewForm = ({
 };
 
 const FormContainer = styled.div`
-  max-width: 970px; /* MATCH WineDetails Container */
-  margin: 2rem auto 4rem auto; /* CENTER like WineDetails */
-  padding: 2rem 1rem; /* SAME padding as WineDetails */
+  /* ← REMOVE max-width and margin when used inline */
+  padding: 2rem;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  /* ← ADD: Remove extra margin when used inline */
+  margin: 0;
 `;
 
 const FormTitle = styled.h3`
