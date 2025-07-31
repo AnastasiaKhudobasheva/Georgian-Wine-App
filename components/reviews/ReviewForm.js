@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-const ReviewForm = ({ onSubmit, onCancel }) => {
-  const [name, setName] = useState("");
-  const [review, setReview] = useState("");
+const ReviewForm = ({
+  onSubmit,
+  onCancel,
+  initialData = null,
+  submitText = "Submit",
+}) => {
+  const [name, setName] = useState(initialData?.name || "");
+  const [review, setReview] = useState(initialData?.review || "");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -28,16 +33,18 @@ const ReviewForm = ({ onSubmit, onCancel }) => {
       review: review.trim(),
     });
 
-    // IMPROVEMENT: parent controls success/error
-    setName("");
-    setReview("");
+    // only clear form if creating new review (not editing)
+    if (!initialData) {
+      setName("");
+      setReview("");
+    }
     setIsSubmitting(false);
   };
 
   // IMPROVEMENT: NO early return! loading state INSIDE form
   return (
     <FormContainer>
-      <FormTitle>Your Review</FormTitle>
+      <FormTitle>{initialData ? "Edit Review" : "Your Review"}</FormTitle>
 
       <form onSubmit={handleSubmit}>
         <InputGroup>
@@ -71,7 +78,7 @@ const ReviewForm = ({ onSubmit, onCancel }) => {
             Cancel
           </button>
           <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Submitting..." : "Submit"}
+            {isSubmitting ? "Submitting..." : submitText}
           </button>
         </ButtonGroup>
       </form>
