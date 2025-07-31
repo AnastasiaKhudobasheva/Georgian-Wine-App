@@ -1,20 +1,32 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-const ReviewForm = ({ onSubmit, onCancel }) => {
-  const [name, setName] = useState("");
-  const [review, setReview] = useState("");
+const ReviewForm = ({
+  onSubmit,
+  onCancel,
+  initialData = null,
+  submitText = "Submit",
+  isEditMode = false,
+}) => {
+  const [name, setName] = useState(initialData?.name || "");
+  const [review, setReview] = useState(initialData?.review || "");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // simple validation
-    if (!name.trim() || !review.trim()) {
-      alert("Please fill in all fields");
+    if (!name.trim()) {
+      alert(isEditMode ? "Please keep your name" : "Please enter your name");
       return;
     }
 
+    if (!review.trim()) {
+      alert(
+        isEditMode ? "Please keep your review text" : "Please write a review"
+      );
+      return;
+    }
     if (review.length > 500) {
       alert("Review must be 500 characters or less");
       return;
@@ -28,16 +40,17 @@ const ReviewForm = ({ onSubmit, onCancel }) => {
       review: review.trim(),
     });
 
-    // IMPROVEMENT: parent controls success/error
-    setName("");
-    setReview("");
+    // only clear form if creating new review (not editing)
+    if (!isEditMode) {
+      setName("");
+      setReview("");
+    }
     setIsSubmitting(false);
   };
 
-  // IMPROVEMENT: NO early return! loading state INSIDE form
   return (
     <FormContainer>
-      <FormTitle>Your Review</FormTitle>
+      <FormTitle>{isEditMode ? "Edit Review" : "Your Review"}</FormTitle>
 
       <form onSubmit={handleSubmit}>
         <InputGroup>
@@ -71,7 +84,7 @@ const ReviewForm = ({ onSubmit, onCancel }) => {
             Cancel
           </button>
           <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Submitting..." : "Submit"}
+            {isSubmitting ? "Submitting..." : submitText}
           </button>
         </ButtonGroup>
       </form>
@@ -80,13 +93,13 @@ const ReviewForm = ({ onSubmit, onCancel }) => {
 };
 
 const FormContainer = styled.div`
-  max-width: 970px; /* MATCH WineDetails Container */
-  margin: 2rem auto 4rem auto; /* CENTER like WineDetails */
-  padding: 2rem 1rem; /* SAME padding as WineDetails */
+  padding: 2rem;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  margin: 0;
 `;
 
 const FormTitle = styled.h3`

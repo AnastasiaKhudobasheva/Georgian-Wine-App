@@ -21,11 +21,7 @@ const ReviewList = ({ wineId }) => {
       const response = await fetch("/api/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          wineId,
-          name: formData.name,
-          review: formData.review,
-        }),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -55,6 +51,25 @@ const ReviewList = ({ wineId }) => {
     );
   }
 
+  const handleReviewUpdate = async (reviewId, formData) => {
+    try {
+      const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast.success("Review updated successfully! 🍷");
+        mutate();
+      } else {
+        toast.error("Failed to update review. Please try again");
+      }
+    } catch (error) {
+      toast.error("Network error. Please try again");
+    }
+  };
+
   const hasNoReviews = !reviews || reviews.length === 0;
 
   return (
@@ -77,14 +92,20 @@ const ReviewList = ({ wineId }) => {
           </ReviewCount>
           <ReviewContainer>
             {reviews.map((review) => (
-              <ReviewCard key={review._id} review={review} />
+              <ReviewCard
+                key={review._id}
+                review={review}
+                onReviewUpdate={handleReviewUpdate}
+              />
             ))}
           </ReviewContainer>
         </>
       )}
 
       {showForm ? (
-        <ReviewForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
+        <FormWrapper>
+          <ReviewForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
+        </FormWrapper>
       ) : (
         <AddReviewButton onClick={() => setShowForm(true)}>
           Add a Review
@@ -93,6 +114,10 @@ const ReviewList = ({ wineId }) => {
     </ReviewSection>
   );
 };
+
+const FormWrapper = styled.div`
+  margin-bottom: 4rem; /* adds space below the form */
+`;
 
 const ReviewSection = styled.section`
   max-width: 1000px;
