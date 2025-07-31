@@ -15,7 +15,7 @@ const ReviewForm = ({
     e.preventDefault();
 
     // simple validation
-    if (!name.trim() || !review.trim()) {
+    if (!name.trim()) {
       alert(initialData ? "Please keep your name" : "Please enter your name");
       return;
     }
