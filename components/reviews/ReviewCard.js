@@ -5,6 +5,7 @@ import ReviewForm from "./ReviewForm";
 const ReviewCard = ({ review, onReviewUpdate, onReviewDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -27,7 +28,9 @@ const ReviewCard = ({ review, onReviewUpdate, onReviewDelete }) => {
 
   // handle delete confirmation
   const handleDeleteConfirm = async () => {
+    setIsDeleting(true);
     await onReviewDelete(review._id);
+    setIsDeleting(false);
     setShowDeleteConfirm(false); // hide confirmation after deletion
   };
 
@@ -67,8 +70,11 @@ const ReviewCard = ({ review, onReviewUpdate, onReviewDelete }) => {
             <ConfirmCancelButton onClick={() => setShowDeleteConfirm(false)}>
               Cancel
             </ConfirmCancelButton>
-            <ConfirmDeleteButton onClick={handleDeleteConfirm}>
-              Delete
+            <ConfirmDeleteButton
+              onClick={handleDeleteConfirm}
+              disabled={isDeleting}
+            >
+              {isDeleting ? "Deleting..." : "Delete"}
             </ConfirmDeleteButton>
           </ConfirmationButtons>
         </ConfirmationSection>
