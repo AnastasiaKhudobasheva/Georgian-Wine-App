@@ -4,6 +4,7 @@ import ReviewForm from "./ReviewForm";
 
 const ReviewCard = ({ review, onReviewUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -44,17 +45,33 @@ const ReviewCard = ({ review, onReviewUpdate }) => {
         <ReviewActions>
           <ReviewDate>{formatDate(review.createdAt)}</ReviewDate>
           <EditButton onClick={() => setIsEditing(true)}>Edit</EditButton>
-          <DeleteButton onClick={() => alert("Delete button clicked!")}>
+          <DeleteButton onClick={() => setShowDeleteConfirm(true)}>
             Delete
           </DeleteButton>
         </ReviewActions>
       </ReviewHeader>
-
       <ReviewText>{review.review}</ReviewText>
+
+      {showDeleteConfirm && (
+        <ConfirmationSection>
+          <ConfirmationText>
+            Are you sure you want to delete this review?
+          </ConfirmationText>
+          <ConfirmationButtons>
+            <ConfirmCancelButton onClick={() => setShowDeleteConfirm(false)}>
+              Cancel
+            </ConfirmCancelButton>
+            <ConfirmDeleteButton
+              onClick={() => alert("Confirmed! Will delete")}
+            >
+              Delete
+            </ConfirmDeleteButton>
+          </ConfirmationButtons>
+        </ConfirmationSection>
+      )}
     </ReviewContainer>
   );
 };
-
 const ReviewContainer = styled.div`
   background: white;
   border: 1px solid #e5e7eb;
@@ -140,6 +157,58 @@ const DeleteButton = styled.button`
     border-color: #dc2626;
     color: white;
     background-color: #ef4444;
+  }
+`;
+
+const ConfirmationSection = styled.div`
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+`;
+
+const ConfirmationText = styled.p`
+  margin: 0 0 1rem 0;
+  font-size: 0.875rem;
+  color: #991b1b;
+  line-height: 1.4;
+`;
+
+const ConfirmationButtons = styled.div`
+  display: flex;
+  gap: 0.75rem;
+`;
+
+const ConfirmCancelButton = styled.button`
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+  }
+`;
+
+const ConfirmDeleteButton = styled.button`
+  padding: 0.5rem 1rem;
+  background: #ef4444;
+  border: 1px solid #ef4444;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #dc2626;
+    border-color: #dc2626;
   }
 `;
 
