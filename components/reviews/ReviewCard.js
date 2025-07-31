@@ -44,6 +44,9 @@ const ReviewCard = ({ review, onReviewUpdate }) => {
         <ReviewActions>
           <ReviewDate>{formatDate(review.createdAt)}</ReviewDate>
           <EditButton onClick={() => setIsEditing(true)}>Edit</EditButton>
+          <DeleteButton onClick={() => alert("Delete button clicked!")}>
+            Delete
+          </DeleteButton>
         </ReviewActions>
       </ReviewHeader>
 
@@ -120,6 +123,23 @@ const EditButton = styled.button`
     border-color: #944710;
     color: #944710;
     background-color: #f9fafb;
+  }
+`;
+
+const DeleteButton = styled.button`
+  background: none;
+  border: 1px solid #ef4444;
+  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  color: #ef4444;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: #dc2626;
+    color: white;
+    background-color: #ef4444;
   }
 `;
 
