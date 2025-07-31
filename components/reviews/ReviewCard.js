@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import ReviewForm from "./ReviewForm";
 
-const ReviewCard = ({ review, onReviewUpdate }) => {
+const ReviewCard = ({ review, onReviewUpdate, onReviewDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
@@ -23,6 +23,12 @@ const ReviewCard = ({ review, onReviewUpdate }) => {
 
   const handleEditCancel = () => {
     setIsEditing(false); // switch back to display mode
+  };
+
+  // handle delete confirmation
+  const handleDeleteConfirm = async () => {
+    await onReviewDelete(review._id);
+    setShowDeleteConfirm(false); // hide confirmation after deletion
   };
 
   // if editing, show form instead of review display
@@ -61,9 +67,7 @@ const ReviewCard = ({ review, onReviewUpdate }) => {
             <ConfirmCancelButton onClick={() => setShowDeleteConfirm(false)}>
               Cancel
             </ConfirmCancelButton>
-            <ConfirmDeleteButton
-              onClick={() => alert("Confirmed! Will delete")}
-            >
+            <ConfirmDeleteButton onClick={handleDeleteConfirm}>
               Delete
             </ConfirmDeleteButton>
           </ConfirmationButtons>
