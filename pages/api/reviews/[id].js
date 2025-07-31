@@ -1,4 +1,4 @@
-// update single review by ID
+// update single review by ID + DELETE review by ID
 
 import dbConnect from "@/db/connect";
 import Review from "@/db/models/Review";
@@ -44,6 +44,19 @@ export default async function handler(req, res) {
     } catch (error) {
       console.log("Update Review Error:", error);
       res.status(500).json({ error: "Failed to update review" });
+    }
+  } else if (req.method === "DELETE") {
+    try {
+      const deletedReview = await Review.findByIdAndDelete(id);
+
+      if (!deletedReview) {
+        return res.status(404).json({ error: "Review not found" });
+      }
+
+      res.status(200).json({ message: "Review deleted successfully" });
+    } catch (error) {
+      console.log("Delete Review Error:", error);
+      res.status(500).json({ error: "Failed to delete review" });
     }
   } else {
     res.status(405).json({ error: "Method not allowed" });
