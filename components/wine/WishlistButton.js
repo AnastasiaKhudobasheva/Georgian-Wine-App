@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Heart } from "lucide-react";
 import { toast } from "sonner";
 
-const WishlistButton = ({ wineId }) => {
+const WishlistButton = ({ wineId, onWishlistChange }) => {
   const [isInWishlist, setIsInWishlist] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isCheckingStatus, setIsCheckingStatus] = useState(true);
@@ -39,6 +39,7 @@ const WishlistButton = ({ wineId }) => {
         if (response.ok) {
           setIsInWishlist(false);
           toast.success("Removed from wishlist! 💔");
+          onWishlistChange?.(); // TELL PARENT TO REFRESH
         } else {
           toast.error("Failed to remove from wishlist");
         }
@@ -50,6 +51,7 @@ const WishlistButton = ({ wineId }) => {
         if (response.ok) {
           setIsInWishlist(true);
           toast.success("Added to wishlist! ❤️");
+          onWishlistChange?.(); // TELL PARENT TO REFRESH
         } else {
           toast.error("Failed to add to wishlist");
         }
