@@ -21,7 +21,10 @@ const ReviewList = ({ wineId }) => {
       const response = await fetch("/api/reviews", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          wineId, // wineId from component scope
+          ...formData, // SPREAD: name and review from form
+        }),
       });
 
       if (response.ok) {
@@ -70,6 +73,23 @@ const ReviewList = ({ wineId }) => {
     }
   };
 
+  const handleReviewDelete = async (reviewId) => {
+    try {
+      const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        toast.success("Review deleted successfully! 🗑️");
+        mutate();
+      } else {
+        toast.error("Failed to delete review. Please try again");
+      }
+    } catch (error) {
+      toast.error("Network error. Please try again");
+    }
+  };
+
   const hasNoReviews = !reviews || reviews.length === 0;
 
   return (
@@ -96,6 +116,7 @@ const ReviewList = ({ wineId }) => {
                 key={review._id}
                 review={review}
                 onReviewUpdate={handleReviewUpdate}
+                onReviewDelete={handleReviewDelete}
               />
             ))}
           </ReviewContainer>
