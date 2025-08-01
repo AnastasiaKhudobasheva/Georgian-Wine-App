@@ -4,13 +4,7 @@ import WineCard from "@/components/wine/WineCard";
 import { Loading, ErrorMessage } from "@/components/ui/LoadingAndError";
 
 const WishlistPage = () => {
-  // fetch favorited wines from API
-  const {
-    data: favoriteWines,
-    error,
-    isLoading,
-    mutate,
-  } = useSWR("/api/wishlist");
+  const { data: favoriteWines, error, isLoading } = useSWR("/api/wishlist");
 
   if (isLoading) return <Loading message="Loading your wishlist..." />;
 
@@ -41,11 +35,7 @@ const WishlistPage = () => {
 
       <WineGrid>
         {favoriteWines.map((wine) => (
-          <WineCard
-            key={wine._id}
-            wine={wine}
-            onWishlistChange={() => mutate()}
-          />
+          <WineCard key={wine._id} wine={wine} />
         ))}
       </WineGrid>
 

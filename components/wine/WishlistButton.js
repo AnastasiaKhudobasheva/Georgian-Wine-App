@@ -1,35 +1,16 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
 import { Heart } from "lucide-react";
 import { toast } from "sonner";
+import useSWR from "swr";
 
-const WishlistButton = ({ wineId, onWishlistChange }) => {
-  const [isInWishlist, setIsInWishlist] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isCheckingStatus, setIsCheckingStatus] = useState(true);
+const WishlistButton = ({ wineId }) => {
+  // ALL wishlist data with SWR
+  const { data: wishlist = [], isLoading, mutate } = useSWR("/api/wishlist");
 
-  // check if wine is already in wishlist when component loads
-  useEffect(() => {
-    const checkWishlistStatus = async () => {
-      try {
-        const response = await fetch(`/api/wishlist/check/${wineId}`);
-        const data = await response.json();
-        setIsInWishlist(data.isInWishlist);
-      } catch (error) {
-        console.log("Error checking wishlist status:", error);
-      } finally {
-        setIsCheckingStatus(false);
-      }
-    };
-
-    if (wineId) {
-      checkWishlistStatus();
-    }
-  }, [wineId]);
+  // check if wine is in the list
+  const isInWishlist = wishlist?.some((item) => item._id === wineId);
 
   const handleToggle = async () => {
-    setIsLoading(true);
-
     try {
       if (isInWishlist) {
         const response = await fetch(`/api/wishlist/${wineId}`, {
@@ -37,9 +18,8 @@ const WishlistButton = ({ wineId, onWishlistChange }) => {
         });
 
         if (response.ok) {
-          setIsInWishlist(false);
           toast.success("Removed from wishlist! 💔");
-          onWishlistChange?.(); // TELL PARENT TO REFRESH
+          mutate();
         } else {
           toast.error("Failed to remove from wishlist");
         }
@@ -49,27 +29,16 @@ const WishlistButton = ({ wineId, onWishlistChange }) => {
         });
 
         if (response.ok) {
-          setIsInWishlist(true);
           toast.success("Added to wishlist! ❤️");
-          onWishlistChange?.(); // TELL PARENT TO REFRESH
+          mutate();
         } else {
           toast.error("Failed to add to wishlist");
         }
       }
     } catch (error) {
       toast.error("Network error. Please try again.");
-    } finally {
-      setIsLoading(false);
     }
   };
-
-  if (isCheckingStatus) {
-    return (
-      <HeartButton disabled>
-        <Heart size={20} color="#d1d5db" />
-      </HeartButton>
-    );
-  }
 
   return (
     <HeartButton
@@ -80,7 +49,7 @@ const WishlistButton = ({ wineId, onWishlistChange }) => {
       <Heart
         size={20}
         fill={isInWishlist ? "#944710" : "none"}
-        color={isInWishlist ? "#944710" : "#944710"}
+        color="#944710"
       />
     </HeartButton>
   );

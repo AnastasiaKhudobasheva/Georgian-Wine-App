@@ -10,15 +10,13 @@ export default async function handler(req, res) {
 
   if (req.method === "POST") {
     try {
-      // check if already in wishlist
       const existing = await Wishlist.findOne({ wineId });
 
       if (existing) {
         return res.status(400).json({ error: "Wine already in wishlist" });
       }
 
-      const newWishlistItem = new Wishlist({ wineId });
-      await newWishlistItem.save();
+      await Wishlist.create({ wineId });
 
       res.status(201).json({ message: "Wine added to wishlist" });
     } catch (error) {

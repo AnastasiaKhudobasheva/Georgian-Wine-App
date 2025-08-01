@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Navigation />
       <Component {...pageProps} />
-      <Toaster position="top-right" />
+      <Toaster position="bottom-right" closeButton />
     </SWRConfig>
   );
 }

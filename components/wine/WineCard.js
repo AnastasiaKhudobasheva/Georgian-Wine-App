@@ -4,11 +4,11 @@ import Image from "next/image";
 import Badge from "../ui/Badge";
 import WishlistButton from "./WishlistButton";
 
-const WineCard = ({ wine, onWishlistChange }) => {
+const WineCard = ({ wine }) => {
   return (
     <CardContainer>
       <WishlistButtonContainer>
-        <WishlistButton wineId={wine._id} onWishlistChange={onWishlistChange} />
+        <WishlistButton wineId={wine._id} />
       </WishlistButtonContainer>
       {/* Left side - Wine Image */}
       <Link href={`/wines/${wine.slug}`} passHref>
