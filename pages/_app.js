@@ -1,6 +1,7 @@
 import { SWRConfig } from "swr";
 import GlobalStyle from "../styles";
 import { Toaster } from "sonner";
+import Navigation from "@/components/layout/Navigation";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }) {
       }}
     >
       <GlobalStyle />
+      <Navigation />
       <Component {...pageProps} />
       <Toaster position="top-right" />
     </SWRConfig>
