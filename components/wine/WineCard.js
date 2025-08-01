@@ -2,10 +2,14 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import Badge from "../ui/Badge";
+import WishlistButton from "./WishlistButton";
 
 const WineCard = ({ wine }) => {
   return (
     <CardContainer>
+      <WishlistButtonContainer>
+        <WishlistButton wineId={wine._id} />
+      </WishlistButtonContainer>
       {/* Left side - Wine Image */}
       <Link href={`/wines/${wine.slug}`} passHref>
         <ImageContainer>
@@ -61,17 +65,18 @@ const WineCard = ({ wine }) => {
 };
 
 const CardContainer = styled.div`
+  position: relative;
   background: white;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.3s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
-  min-height: 240px; /* Changed to min-height so it can grow if needed */
+  min-height: 240px; /* min-height: it can grow if needed */
   width: 100%;
-  max-width: 480px; /* Set a good max width for the card */
+  max-width: 480px;
 
   &:hover {
     transform: translateY(-2px);
@@ -109,7 +114,6 @@ const WineInfo = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* Removed justify-content: space-between - let content flow naturally */
 `;
 
 const WineName = styled.div`
@@ -171,6 +175,13 @@ const Price = styled.div`
   font-weight: 700;
   color: #944710;
   text-align: right;
+`;
+
+const WishlistButtonContainer = styled.div`
+  position: absolute;
+  top: -1rem;
+  right: -1.3rem;
+  z-index: 10;
 `;
 
 export default WineCard;

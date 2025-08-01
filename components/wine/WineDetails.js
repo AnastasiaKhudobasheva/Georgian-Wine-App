@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Badge from "../ui/Badge";
 import GrapeTag from "../ui/GrapeTag";
+import WishlistButton from "./WishlistButton";
 
 const WineDetails = ({ wine }) => {
   return (
@@ -57,6 +58,7 @@ const WineDetails = ({ wine }) => {
 
           <PriceSection>
             <Price>€{wine.price.toFixed(2)}</Price>
+            <WishlistButton wineId={wine._id} />
           </PriceSection>
 
           <Description>{wine.description}</Description>
@@ -195,6 +197,10 @@ const PriceSection = styled.div`
   padding: 1rem 0;
   border-top: 1px solid #e5e7eb;
   border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 `;
 
 const Price = styled.div`
