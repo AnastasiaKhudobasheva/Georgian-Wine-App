@@ -11,6 +11,13 @@ const WishlistButton = ({ wineId }) => {
   const isInWishlist = wishlist?.some((item) => item._id === wineId);
 
   const handleToggle = async () => {
+    // optimistic UI update (instant feedback)
+    const updatedWishlist = isInWishlist
+      ? wishlist.filter((item) => item._id !== wineId) // Remove wine
+      : [...wishlist, { _id: wineId }]; // Add fake wine entry
+
+    mutate(updatedWishlist, false); // update UI instantly, no revalidation
+
     try {
       if (isInWishlist) {
         const response = await fetch(`/api/wishlist/${wineId}`, {
