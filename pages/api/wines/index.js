@@ -1,4 +1,4 @@
-//fetch all wines
+//fetch all wines and filter them
 
 import dbConnect from "@/db/connect";
 import Wine from "@/db/models/Wine";
