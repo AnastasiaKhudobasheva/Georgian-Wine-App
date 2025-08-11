@@ -14,7 +14,8 @@ export default async function handler(req, res) {
       let mongoFilter = {};
 
       if (region) {
-        mongoFilter.region = region;
+        const regionArray = region.split(",");
+        mongoFilter.region = { $in: regionArray };
       }
 
       if (grape) {
@@ -23,7 +24,8 @@ export default async function handler(req, res) {
       }
 
       if (winemaker) {
-        mongoFilter.winemaker = winemaker;
+        const winemakerArray = winemaker.split(",");
+        mongoFilter.winemaker = { $in: winemakerArray };
       }
 
       if (technology) {

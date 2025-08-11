@@ -2,7 +2,12 @@ import styled from "styled-components";
 import { useState } from "react";
 import { QvevriIcon, OakBarrelIcon, PetNatIcon } from "../icons/TechIcons";
 
-const Badge = ({ technology, clickable = false }) => {
+const Badge = ({
+  technology,
+  clickable = false,
+  isActive = false,
+  onClick,
+}) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
   const getIcon = (tech) => {
@@ -18,6 +23,12 @@ const Badge = ({ technology, clickable = false }) => {
     }
   };
 
+  const handleClick = () => {
+    if (clickable && onClick) {
+      onClick("technology", technology);
+    }
+  };
+
   // If no valid technology, don't render anything
   const icon = getIcon(technology);
   if (!icon) return null; // Exit early - don't render anything
@@ -26,7 +37,9 @@ const Badge = ({ technology, clickable = false }) => {
     <BadgeContainer
       onMouseEnter={() => setShowTooltip(true)}
       onMouseLeave={() => setShowTooltip(false)}
+      onClick={handleClick}
       $clickable={clickable}
+      $isActive={isActive}
     >
       <IconWrapper>{icon}</IconWrapper>
       {showTooltip && <Tooltip>{technology}</Tooltip>}
@@ -42,8 +55,8 @@ const BadgeContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0.375rem; /* Smaller padding = less white space */
-  background-color: #f9fafb;
-  border: 1px solid #944710; /* Updated border to match darker color */
+  background-color: ${(props) => (props.$isActive ? "#944710" : "#f9fafb")};
+  border: 1px solid #944710;
   border-radius: 6px;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
@@ -51,20 +64,31 @@ const BadgeContainer = styled.div`
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: ${(props) => (props.$clickable ? "#944710" : "#f3f4f6")};
+    background-color: ${(props) => {
+      if (!props.$clickable) return "#f3f4f6";
+      if (props.$isActive) return "#7a3a0d";
+      return "#944710";
+    }};
     border-color: ${(props) => (props.$clickable ? "#7a3a0d" : "#944710")};
     transform: ${(props) => (props.$clickable ? "translateY(-1px)" : "none")};
 
     svg {
-      color: ${(props) => (props.$clickable ? "white" : "#944710")};
+      color: ${(props) => {
+        if (!props.$clickable) return "#944710";
+        return "white";
+      }};
     }
+  }
+
+  svg {
+    color: ${(props) => (props.$isActive ? "white" : "#944710")};
   }
 `;
 
 const IconWrapper = styled.div`
   width: 24px;
   height: 24px;
-  color: #944710; /* sets the SVG color via currentColor! */
+  color: inherit; /* sets the SVG color via currentColor! */
 
   /* The SVG inherits this color automatically*/
   svg {
