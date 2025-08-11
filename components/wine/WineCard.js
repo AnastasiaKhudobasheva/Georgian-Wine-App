@@ -3,14 +3,36 @@ import Link from "next/link";
 import Image from "next/image";
 import Badge from "../ui/Badge";
 import WishlistButton from "./WishlistButton";
+import GrapeTag from "../ui/GrapeTag";
 
-const WineCard = ({ wine }) => {
+const WineCard = ({ wine, activeFilters = {}, onTagClick }) => {
+  // helper function: check if grape is currently selected in filters
+  const checkIfGrapeIsActive = (grapeName) => {
+    // first check if we have any grape filters at all
+    if (!activeFilters.grape) {
+      return false; // no grape filters = not active
+    }
+    // after check if this specific grape is in the filter list
+    const isThisGrapeSelected = activeFilters.grape.includes(grapeName);
+    return isThisGrapeSelected;
+  };
+
+  const checkIfTechnologyIsActive = (technologyName) => {
+    if (!activeFilters.technology) {
+      return false;
+    }
+
+    const isThisTechnologySelected =
+      activeFilters.technology.includes(technologyName);
+    return isThisTechnologySelected;
+  };
+
   return (
     <CardContainer>
       <WishlistButtonContainer>
         <WishlistButton wineId={wine._id} />
       </WishlistButtonContainer>
-      {/* Left side - Wine Image */}
+
       <Link href={`/wines/${wine.slug}`} passHref>
         <ImageContainer>
           <WineImage
@@ -23,41 +45,44 @@ const WineCard = ({ wine }) => {
         </ImageContainer>
       </Link>
 
-      {/* Right side - Wine Information */}
       <WineInfo>
-        {/* Clickable Wine Name */}
         <Link href={`/wines/${wine.slug}`} passHref>
           <WineName>{wine.name}</WineName>
         </Link>
 
         <Winemaker>{wine.winemaker}</Winemaker>
 
-        {/* Grape Varieties */}
         <GrapeContainer>
           <Label>Grapes:</Label>
           <GrapeList>
-            {wine.grape.map((grape, index) => (
-              <span key={grape}>
-                {grape}
-                {index < wine.grape.length - 1 && ", "}
-              </span>
+            {wine.grape.map((grape) => (
+              <GrapeTag
+                key={grape}
+                grape={grape}
+                clickable={!!onTagClick}
+                isActive={checkIfGrapeIsActive(grape)}
+                onClick={onTagClick}
+              />
             ))}
           </GrapeList>
         </GrapeContainer>
 
-        {/* Region & Year */}
         <RegionYear>
           <strong>{wine.region}</strong> • {wine.year}
         </RegionYear>
 
-        {/* Technology Badges */}
         <TechnologyContainer>
           {wine.technology.map((tech) => (
-            <Badge key={tech} technology={tech} />
+            <Badge
+              key={tech}
+              technology={tech}
+              clickable={!!onTagClick}
+              isActive={checkIfTechnologyIsActive(tech)}
+              onClick={onTagClick}
+            />
           ))}
         </TechnologyContainer>
 
-        {/* Price */}
         <Price>€{wine.price.toFixed(2)}</Price>
       </WineInfo>
     </CardContainer>
