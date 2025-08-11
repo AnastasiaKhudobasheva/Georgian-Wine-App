@@ -81,20 +81,21 @@ const HomePage = () => {
           </ResultsHeader>
 
           {isLoading && (
-            <Loading message="Finding your perfect Georgian wines..." />
+            <Loading message="🍷 Discovering Georgian treasures..." />
           )}
 
           {error && (
-            <ErrorMessage message="Failed to load wines. Please try again." />
+            <ErrorMessage message="Connection issue! Please check your internet and try again." />
           )}
 
           {wines && wines.length === 0 && (
             <EmptyState>
-              <EmptyIcon>🍷</EmptyIcon>
-              <EmptyTitle>No wines match your current filters</EmptyTitle>
+              <EmptyIcon>🇬🇪</EmptyIcon>
+              <EmptyTitle>No Georgian wines match these filters</EmptyTitle>
               <EmptyMessage>
-                Try adjusting your selection or clear all filters to see our
-                full collection.
+                Georgian wine variety is endless! Try different selections or
+                explore our full collection of authentic qvevri and traditional
+                wines.
               </EmptyMessage>
               {filtersActive && (
                 <ClearFiltersButton onClick={handleClearFilters}>
@@ -173,6 +174,11 @@ const MainTitle = styled.h1`
   text-align: center;
   margin: 0 0 1rem 0;
   line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 1.875rem;
+    margin: 0 0 0.75rem 0;
+  }
 `;
 
 const FilterStatus = styled.p`
@@ -181,6 +187,11 @@ const FilterStatus = styled.p`
   font-size: 1rem;
   margin: 0;
   font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    padding: 0 1rem;
+  }
 `;
 
 const WineGrid = styled.div`
@@ -211,6 +222,9 @@ const WineCount = styled.p`
   font-size: 1rem;
   margin: 0;
   font-weight: 500;
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+  }
 `;
 
 const ClearLink = styled.button`
