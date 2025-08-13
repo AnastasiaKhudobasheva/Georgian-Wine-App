@@ -34,12 +34,8 @@ const WineCard = ({ wine, activeFilters = {}, onTagClick }) => {
         <WishlistButton wineId={wine._id} />
       </WishlistButtonContainer>
 
-      {wine.isFeaturedWinemaker && (
-        <WinemakerBadge
-          winemakerSlug={
-            wine.winemaker === "Baia's Wine" ? "baias-wine" : "ori-marani"
-          }
-        />
+      {wine.isFeaturedWinemaker && wine.winemakerSlug && (
+        <WinemakerBadge winemakerSlug={wine.winemakerSlug} />
       )}
 
       <Link href={`/wines/${wine.slug}`} passHref>

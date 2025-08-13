@@ -28,6 +28,7 @@ const HeroContainer = styled.div`
   height: 60vh;
   min-height: 400px;
   max-height: 600px;
+  width: 100%;
   overflow: hidden;
   border-radius: 16px;
   margin-bottom: 3rem;
@@ -46,6 +47,7 @@ const HeroBackground = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  min-height: 400px;
 `;
 
 const HeroImage = styled(Image)`

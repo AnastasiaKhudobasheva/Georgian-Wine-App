@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const wineSchema = new mongoose.Schema({
   name: { type: String, required: true },
   winemaker: { type: String, required: true },
+  winemakerSlug: { type: String },
   grape: { type: [String], required: true },
   region: { type: String, required: true },
   price: { type: Number, required: true },

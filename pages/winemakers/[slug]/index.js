@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import styled from "styled-components";
-
 import { Loading, ErrorMessage } from "@/components/ui/LoadingAndError";
 import WinemakerHero from "@/components/winemaker/WinemakerHero";
 import WinemakerStory from "@/components/winemaker/WinemakerStory";

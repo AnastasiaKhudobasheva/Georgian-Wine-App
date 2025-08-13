@@ -5,21 +5,13 @@ import { useState } from "react";
 const PhotoGallery = ({ photos }) => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  const openPhoto = (photo) => {
-    setSelectedPhoto(photo);
-  };
-
-  const closePhoto = () => {
-    setSelectedPhoto(null);
-  };
-
   return (
     <GalleryContainer>
       <SectionTitle>Gallery</SectionTitle>
 
       <PhotoGrid>
         {photos.map((photo, index) => (
-          <PhotoCard key={index} onClick={() => openPhoto(photo)}>
+          <PhotoCard key={index} onClick={() => setSelectedPhoto(photo)}>
             <PhotoImage
               src={photo.url}
               alt={photo.caption || `Winemaker photo ${index + 1}`}
@@ -33,9 +25,9 @@ const PhotoGallery = ({ photos }) => {
 
       {/* simple modal for enlarged photos */}
       {selectedPhoto && (
-        <PhotoModal onClick={closePhoto}>
+        <PhotoModal onClick={() => setSelectedPhoto(null)}>
           <ModalContent onClick={(e) => e.stopPropagation()}>
-            <CloseButton onClick={closePhoto}>×</CloseButton>
+            <CloseButton onClick={() => setSelectedPhoto(null)}>×</CloseButton>
             <ModalImage
               src={selectedPhoto.url}
               alt={selectedPhoto.caption || "Enlarged photo"}
@@ -86,6 +78,8 @@ const PhotoGrid = styled.div`
 const PhotoCard = styled.div`
   position: relative;
   aspect-ratio: 4/3;
+  width: 100%;
+  min-height: 200px;
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
@@ -128,7 +122,7 @@ const PhotoModal = styled.div`
   bottom: 0;
   background: rgba(0, 0, 0, 0.9);
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   z-index: 1000;
   padding: 2rem;
@@ -138,6 +132,8 @@ const ModalContent = styled.div`
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
+  width: 800px;
+  height: 600px;
   aspect-ratio: 4/3;
   border-radius: 12px;
   overflow: hidden;

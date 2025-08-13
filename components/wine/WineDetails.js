@@ -12,12 +12,8 @@ const WineDetails = ({ wine }) => {
       <BackButton href="/">← Back to Wine Collection</BackButton>
 
       <ContentLayout>
-        {wine.isFeaturedWinemaker && (
-          <WinemakerBadge
-            winemakerSlug={
-              wine.winemaker === "Baia's Wine" ? "baias-wine" : "ori-marani"
-            }
-          />
+        {wine.isFeaturedWinemaker && wine.winemakerSlug && (
+          <WinemakerBadge winemakerSlug={wine.winemakerSlug} />
         )}
 
         <ImageSection>
