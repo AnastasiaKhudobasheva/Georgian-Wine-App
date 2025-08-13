@@ -11,6 +11,10 @@ const wineSchema = new mongoose.Schema({
   imageUrl: { type: String, required: true },
   description: { type: String, required: true },
   slug: { type: String, required: true, unique: true },
+  isFeaturedWinemaker: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Avoid model overwrite error in dev
