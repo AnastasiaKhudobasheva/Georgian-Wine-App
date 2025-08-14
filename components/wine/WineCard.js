@@ -5,6 +5,7 @@ import Badge from "../ui/Badge";
 import WishlistButton from "./WishlistButton";
 import GrapeTag from "../ui/GrapeTag";
 import WinemakerBadge from "./WinemakerBadge";
+import SommelierBadge from "./SommelierBadge";
 
 const WineCard = ({ wine, activeFilters = {}, onTagClick }) => {
   // helper function: check if grape is currently selected in filters
@@ -34,8 +35,18 @@ const WineCard = ({ wine, activeFilters = {}, onTagClick }) => {
         <WishlistButton wineId={wine._id} />
       </WishlistButtonContainer>
 
+      {/* winemaker Badge */}
+
       {wine.isFeaturedWinemaker && wine.winemakerSlug && (
         <WinemakerBadge winemakerSlug={wine.winemakerSlug} />
+      )}
+
+      {/* sommelier badge */}
+
+      {wine.isSommelierChoice && (
+        <SommelierBadgeContainer>
+          <SommelierBadge sommelierSlug={wine.slug} />
+        </SommelierBadgeContainer>
       )}
 
       <Link href={`/wines/${wine.slug}`} passHref>
@@ -212,6 +223,14 @@ const WishlistButtonContainer = styled.div`
   top: -1rem;
   right: -1.3rem;
   z-index: 10;
+`;
+
+// sommelier badge positioned below winemaker badge
+const SommelierBadgeContainer = styled.div`
+  position: absolute;
+  top: 50px; /* position below the winemaker badge */
+  left: -8px;
+  z-index: 9; /* slightly lower than winemaker badge */
 `;
 
 export default WineCard;
