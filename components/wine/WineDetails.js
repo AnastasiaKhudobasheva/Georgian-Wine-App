@@ -4,6 +4,7 @@ import Link from "next/link";
 import Badge from "../ui/Badge";
 import GrapeTag from "../ui/GrapeTag";
 import WishlistButton from "./WishlistButton";
+import WinemakerBadge from "./WinemakerBadge";
 
 const WineDetails = ({ wine }) => {
   return (
@@ -11,6 +12,10 @@ const WineDetails = ({ wine }) => {
       <BackButton href="/">← Back to Wine Collection</BackButton>
 
       <ContentLayout>
+        {wine.isFeaturedWinemaker && wine.winemakerSlug && (
+          <WinemakerBadge winemakerSlug={wine.winemakerSlug} />
+        )}
+
         <ImageSection>
           <WineImage
             src={wine.imageUrl}

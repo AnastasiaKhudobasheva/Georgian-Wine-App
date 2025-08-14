@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const wineSchema = new mongoose.Schema({
   name: { type: String, required: true },
   winemaker: { type: String, required: true },
+  winemakerSlug: { type: String },
   grape: { type: [String], required: true },
   region: { type: String, required: true },
   price: { type: Number, required: true },
@@ -11,6 +12,10 @@ const wineSchema = new mongoose.Schema({
   imageUrl: { type: String, required: true },
   description: { type: String, required: true },
   slug: { type: String, required: true, unique: true },
+  isFeaturedWinemaker: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Avoid model overwrite error in dev

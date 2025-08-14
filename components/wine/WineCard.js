@@ -4,6 +4,7 @@ import Image from "next/image";
 import Badge from "../ui/Badge";
 import WishlistButton from "./WishlistButton";
 import GrapeTag from "../ui/GrapeTag";
+import WinemakerBadge from "./WinemakerBadge";
 
 const WineCard = ({ wine, activeFilters = {}, onTagClick }) => {
   // helper function: check if grape is currently selected in filters
@@ -32,6 +33,10 @@ const WineCard = ({ wine, activeFilters = {}, onTagClick }) => {
       <WishlistButtonContainer>
         <WishlistButton wineId={wine._id} />
       </WishlistButtonContainer>
+
+      {wine.isFeaturedWinemaker && wine.winemakerSlug && (
+        <WinemakerBadge winemakerSlug={wine.winemakerSlug} />
+      )}
 
       <Link href={`/wines/${wine.slug}`} passHref>
         <ImageContainer>
