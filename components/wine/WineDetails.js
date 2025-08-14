@@ -125,8 +125,8 @@ const ContentLayout = styled.div`
 // sommelier badge below winemaker badge
 const SommelierBadgeContainer = styled.div`
   position: absolute;
-  top: 50px; /* position below the winemaker badge */
-  left: -8px;
+  top: 35px; /* position below the winemaker badge */
+  left: -1px;
   z-index: 9; /* slightly lower than winemaker badge */
 `;
 

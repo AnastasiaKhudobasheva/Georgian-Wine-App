@@ -5,7 +5,7 @@ const SommelierBadge = ({ sommelierSlug }) => {
   return (
     <Link href={`/sommeliers-choice/${sommelierSlug}`} passHref>
       <RibbonContainer>
-        <RibbonText>SOMMELIER&aposS CHOICE</RibbonText>
+        <RibbonText>SOMMELIER'S CHOICE</RibbonText>
       </RibbonContainer>
     </Link>
   );
