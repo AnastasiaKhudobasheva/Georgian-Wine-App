@@ -16,6 +16,10 @@ const wineSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  isSommelierChoice: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 // Avoid model overwrite error in dev
