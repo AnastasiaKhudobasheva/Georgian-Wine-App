@@ -84,10 +84,13 @@ const NotesText = styled.div`
   font-size: 1.25rem;
   line-height: 1.8;
   color: #374151;
-  font-family: "Brush Script MT", cursive; /* handwritten style font for quotes */
+  font-family: "Georgia", serif; /* Same as winemaker interviews */
+  font-weight: 400;
   text-align: center;
   font-style: italic;
   margin: 1rem 0;
+  position: relative;
+  padding: 0 1.5rem;
 
   p {
     margin: 0 0 1rem 0;

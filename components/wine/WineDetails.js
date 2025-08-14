@@ -128,6 +128,10 @@ const SommelierBadgeContainer = styled.div`
   top: 35px; /* position below the winemaker badge */
   left: -1px;
   z-index: 9; /* slightly lower than winemaker badge */
+
+  @media (min-width: 768px) {
+    left: -1px; /* keep badges aligned with image section */
+  }
 `;
 
 const ImageSection = styled.div`
