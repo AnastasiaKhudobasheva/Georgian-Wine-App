@@ -32,26 +32,6 @@ export default async function handler(req, res) {
 
     console.log(`✅ Updated ${wineUpdates.modifiedCount} wines!`);
 
-    // STEP 3.5: Mark wines as sommelier choices
-    console.log("🏷️ Marking wines as sommelier choices...");
-
-    const wineMarkingResult = await Wine.updateMany(
-      {
-        slug: {
-          $in: [
-            "ori-marani-mamastan-petnat-2024",
-            "baias-krakhuna-2023",
-            "ethno-saperavi-2020",
-          ],
-        },
-      },
-      { $set: { isSommelierChoice: true } }
-    );
-
-    console.log(
-      `✅ Marked ${wineMarkingResult.modifiedCount} wines as sommelier choices!`
-    );
-
     // STEP 4: Get the wine IDs we need
     console.log("🔍 Getting wine IDs...");
 
