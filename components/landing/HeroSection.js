@@ -21,7 +21,14 @@ const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  background: linear-gradient(
+      135deg,
+      rgba(52, 58, 64, 0.7) 0%,
+      rgba(73, 80, 87, 0.6) 50%,
+      rgba(148, 71, 16, 0.5) 100%
+    ),
+    url("https://wineinternationalassociation.org/wp-content/uploads/2023/11/Georgia-image-1024x576.jpg")
+      center/cover no-repeat;
   padding: 4rem 1rem;
   position: relative;
 
@@ -40,10 +47,11 @@ const Content = styled.div`
 const Headline = styled.h1`
   font-size: 3.5rem;
   font-weight: 700;
-  color: #374151;
+  color: white;
   line-height: 1.1;
   margin: 0 0 1.5rem 0;
   letter-spacing: -0.02em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 1024px) {
     font-size: 3rem;
@@ -61,7 +69,7 @@ const Headline = styled.h1`
 
 const Tagline = styled.p`
   font-size: 1.375rem;
-  color: #6b7280;
+  color: #f8f9fa;
   line-height: 1.6;
   margin: 0 0 2.5rem 0;
   font-weight: 400;
@@ -69,6 +77,7 @@ const Tagline = styled.p`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 
   @media (max-width: 768px) {
     font-size: 1.125rem;
