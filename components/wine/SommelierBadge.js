@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import Link from "next/link";
 
-const SommelierBadge = ({ sommelierSlug }) => {
+const SommelierBadge = ({ sommelierSlug, context = "details" }) => {
   return (
     <Link href={`/sommeliers-choice/${sommelierSlug}`} passHref>
-      <RibbonContainer>
-        <RibbonText>SOMMELIER&rsquo;S CHOICE</RibbonText>
+      <RibbonContainer $context={context}>
+        <RibbonText>
+          SOMMELIER&rsquo;S <br /> CHOICE
+        </RibbonText>
       </RibbonContainer>
     </Link>
   );
@@ -13,9 +15,11 @@ const SommelierBadge = ({ sommelierSlug }) => {
 
 const RibbonContainer = styled.div`
   position: absolute;
-  top: 10px;
-  left: -8px;
-  z-index: 10;
+  top: ${(props) => {
+    return props.$context === "card" ? "50px" : "50px";
+  }}; // moves below winemaker badge based on whether in wine card or wine details component + ternary operators need explicit return
+  left: -8px; // matches winemaker badge
+  z-index: 9; //lower than winemaker badge
   cursor: pointer;
   text-decoration: none;
 `;
@@ -27,7 +31,7 @@ const RibbonText = styled.div`
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 0.375rem 0.25rem 0.375rem 1rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   position: relative;
   box-shadow: 0 2px 6px rgba(192, 192, 192, 0.4);
   transition: all 0.3s ease;
