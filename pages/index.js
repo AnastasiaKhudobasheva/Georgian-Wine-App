@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import HeroSection from "@/components/landing/HeroSection";
 import HeritageSection from "@/components/landing/HeritageSection";
+import QvevriSection from "@/components/landing/QvevriSection";
 
 const LandingPage = () => {
   return (
     <Container>
       <HeroSection />
       <HeritageSection />
+      <QvevriSection />
     </Container>
     // <div style={{ padding: "2rem", textAlign: "center" }}>
     //   <h1>Georgian Wine Culture - Coming Soon! 🍷</h1>
