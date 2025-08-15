@@ -44,9 +44,7 @@ const WineCard = ({ wine, activeFilters = {}, onTagClick }) => {
       {/* sommelier badge */}
 
       {wine.isSommelierChoice && (
-        <SommelierBadgeContainer>
-          <SommelierBadge sommelierSlug={wine.slug} />
-        </SommelierBadgeContainer>
+        <SommelierBadge sommelierSlug={wine.slug} context="card" />
       )}
 
       <Link href={`/wines/${wine.slug}`} passHref>
@@ -106,6 +104,7 @@ const WineCard = ({ wine, activeFilters = {}, onTagClick }) => {
 };
 
 const CardContainer = styled.div`
+  display: flex;
   position: relative;
   background: white;
   border-radius: 12px;
@@ -113,7 +112,6 @@ const CardContainer = styled.div`
   overflow: visible;
   transition: all 0.3s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  display: flex;
   flex-direction: row;
   min-height: 240px; /* min-height: it can grow if needed */
   width: 100%;
@@ -223,14 +221,6 @@ const WishlistButtonContainer = styled.div`
   top: -1rem;
   right: -1.3rem;
   z-index: 10;
-`;
-
-// sommelier badge positioned below winemaker badge
-const SommelierBadgeContainer = styled.div`
-  position: absolute;
-  top: 35px; /* position below the winemaker badge */
-  left: -1px;
-  z-index: 9; /* slightly lower than winemaker badge */
 `;
 
 export default WineCard;

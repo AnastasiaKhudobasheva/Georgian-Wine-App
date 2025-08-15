@@ -10,7 +10,7 @@ const Navigation = () => {
         </NavBrand>
 
         <NavLinks>
-          <NavLink href="/">Wine Collection</NavLink>
+          <NavLink href="/wines">Wine Collection</NavLink>
           <NavLink href="/wishlist">My Wishlist</NavLink>
         </NavLinks>
       </NavContent>

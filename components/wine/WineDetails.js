@@ -10,7 +10,7 @@ import SommelierBadge from "./SommelierBadge";
 const WineDetails = ({ wine }) => {
   return (
     <Container>
-      <BackButton href="/">← Back to Wine Collection</BackButton>
+      <BackButton href="/wines">← Back to Wine Collection</BackButton>
 
       <ContentLayout>
         {/* winemaker Badge */}
@@ -19,11 +19,7 @@ const WineDetails = ({ wine }) => {
         )}
 
         {/* sommelier Badge */}
-        {wine.isSommelierChoice && (
-          <SommelierBadgeContainer>
-            <SommelierBadge sommelierSlug={wine.slug} />
-          </SommelierBadgeContainer>
-        )}
+        {wine.isSommelierChoice && <SommelierBadge sommelierSlug={wine.slug} />}
 
         <ImageSection>
           <WineImage
@@ -111,7 +107,7 @@ const BackButton = styled(Link)`
 `;
 
 const ContentLayout = styled.div`
-  display: grid;
+  display: grid; // difference vs wine card: horizontal flex layout
   grid-template-columns: 1fr;
   gap: 2rem;
   position: relative; /* for badge positioning */
@@ -119,18 +115,6 @@ const ContentLayout = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1.5fr;
     gap: 3rem;
-  }
-`;
-
-// sommelier badge below winemaker badge
-const SommelierBadgeContainer = styled.div`
-  position: absolute;
-  top: 35px; /* position below the winemaker badge */
-  left: -1px;
-  z-index: 9; /* slightly lower than winemaker badge */
-
-  @media (min-width: 768px) {
-    left: -1px; /* keep badges aligned with image section */
   }
 `;
 
