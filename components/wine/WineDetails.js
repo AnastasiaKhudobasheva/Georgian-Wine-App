@@ -10,7 +10,7 @@ import SommelierBadge from "./SommelierBadge";
 const WineDetails = ({ wine }) => {
   return (
     <Container>
-      <BackButton href="/">← Back to Wine Collection</BackButton>
+      <BackButton href="/wines">← Back to Wine Collection</BackButton>
 
       <ContentLayout>
         {/* winemaker Badge */}

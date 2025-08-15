@@ -9,7 +9,7 @@ const WinemakerWines = ({ wines, winemakerName }) => {
         <SectionTitle>Taste Their Wines</SectionTitle>
         <EmptyState>
           <EmptyText>No wines available from this winemaker yet.</EmptyText>
-          <BackToCollectionButton href="/">
+          <BackToCollectionButton href="/wines">
             Explore All Georgian Wines
           </BackToCollectionButton>
         </EmptyState>
@@ -30,7 +30,7 @@ const WinemakerWines = ({ wines, winemakerName }) => {
         ))}
       </WinesGrid>
 
-      <ViewAllButton href="/">View All Georgian Wines</ViewAllButton>
+      <ViewAllButton href="/wines">View All Georgian Wines</ViewAllButton>
     </WinesContainer>
   );
 };

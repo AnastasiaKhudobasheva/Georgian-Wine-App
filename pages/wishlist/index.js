@@ -21,7 +21,7 @@ const WishlistPage = () => {
             Your wishlist is empty. Start exploring Georgian wines to add your
             favorites!
           </EmptyMessage>
-          <BackToWinesButton href="/">
+          <BackToWinesButton href="/wines">
             Explore Wine Collection
           </BackToWinesButton>
         </EmptyState>
