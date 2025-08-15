@@ -2,6 +2,7 @@ import styled from "styled-components";
 import HeroSection from "@/components/landing/HeroSection";
 import HeritageSection from "@/components/landing/HeritageSection";
 import QvevriSection from "@/components/landing/QvevriSection";
+import GrapeVarietiesSection from "@/components/landing/GrapeVarietiesSection";
 
 const LandingPage = () => {
   return (
@@ -9,6 +10,7 @@ const LandingPage = () => {
       <HeroSection />
       <HeritageSection />
       <QvevriSection />
+      <GrapeVarietiesSection />
     </Container>
     // <div style={{ padding: "2rem", textAlign: "center" }}>
     //   <h1>Georgian Wine Culture - Coming Soon! 🍷</h1>

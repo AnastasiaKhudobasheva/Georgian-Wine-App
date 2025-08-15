@@ -11,6 +11,10 @@ import {
   buildAPIUrl,
   setFilterValue,
 } from "@/lib/filterUtils";
+import HeroSection from "@/components/landing/HeroSection";
+import HeritageSection from "@/components/landing/HeritageSection";
+import QvevriSection from "@/components/landing/QvevriSection";
+import GrapeVarietiesSection from "@/components/landing/GrapeVarietiesSection";
 
 const HomePage = () => {
   // starts empty
@@ -55,6 +59,10 @@ const HomePage = () => {
 
   return (
     <Container>
+      <HeroSection />
+      <HeritageSection />
+      <QvevriSection />
+      <GrapeVarietiesSection />
       <Layout>
         <FilterBar
           filters={filters}
