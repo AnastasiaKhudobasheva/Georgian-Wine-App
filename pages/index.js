@@ -7,34 +7,19 @@ import ExploreSection from "@/components/landing/ExploreSection";
 
 const LandingPage = () => {
   return (
-    <Container>
+    <PageContainer>
       <HeroSection />
       <HeritageSection />
       <QvevriSection />
       <GrapeVarietiesSection />
       <ExploreSection />
-    </Container>
-    // <div style={{ padding: "2rem", textAlign: "center" }}>
-    //   <h1>Georgian Wine Culture - Coming Soon! 🍷</h1>
-    //   <p>Landing page under construction...</p>
-    //   <a href="/wines">View Wine Collection →</a>
-    // </div>
+    </PageContainer>
   );
 };
 
-const Container = styled.section`
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
-  padding: 4rem 1rem;
-  position: relative;
-
-  @media (max-width: 768px) {
-    min-height: 70vh;
-    padding: 3rem 1rem;
-  }
+const PageContainer = styled.div`
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
 `;
 
 export default LandingPage;
