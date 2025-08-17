@@ -5,7 +5,10 @@ const WinemakerBadge = ({ winemakerSlug }) => {
   return (
     <Link href={`/winemakers/${winemakerSlug}`} passHref>
       <RibbonContainer>
-        <RibbonText>MEET THE WINEMAKER</RibbonText>
+        <RibbonText>
+          MEET THE
+          <br /> WINEMAKER
+        </RibbonText>
       </RibbonContainer>
     </Link>
   );
@@ -13,7 +16,7 @@ const WinemakerBadge = ({ winemakerSlug }) => {
 
 const RibbonContainer = styled.div`
   position: absolute;
-  top: 10px;
+  top: 8px;
   left: -8px;
   z-index: 10;
   cursor: pointer;
@@ -27,7 +30,7 @@ const RibbonText = styled.div`
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 0.375rem 0.25rem 0.375rem 1rem; //changing the ribbon lenght
+  padding: 0.5rem 0.25rem 0.5rem 1rem; //changing the ribbon lenght
   position: relative;
   box-shadow: 0 2px 6px rgba(212, 175, 55, 0.4);
   transition: all 0.3s ease;
