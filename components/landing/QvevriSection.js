@@ -80,6 +80,7 @@ const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  margin-left: -1rem;
   /* border-radius: 12px; */
   /* overflow: hidden; */
   /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); */
@@ -179,7 +180,7 @@ const UNESCOBadge = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: white;
+  background: #f0ece6;
   padding: 1.1rem 1rem;
   max-width: 400px;
   margin: 0;

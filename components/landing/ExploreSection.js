@@ -49,12 +49,11 @@ const ExploreSection = () => {
 };
 
 const Container = styled.section`
-  padding: 5rem 1rem 4rem 1rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  color: white;
+  padding: -5rem 1rem 4rem 1rem;
+  background: #f0ece6;
 
   @media (max-width: 768px) {
-    padding: 3rem 1rem 2.5rem 1rem;
+    padding: 1rem 1rem 2.5rem 1rem;
   }
 `;
 
@@ -115,11 +114,8 @@ const Story = styled.p`
 `;
 
 const CallToAction = styled.div`
-  background: rgba(255, 255, 255, 0.15);
+  background: #f0ece6;
   padding: 3rem 2rem;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
 
   @media (max-width: 768px) {
     padding: 2rem 1.5rem;

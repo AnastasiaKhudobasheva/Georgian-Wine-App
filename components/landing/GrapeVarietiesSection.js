@@ -58,7 +58,7 @@ const GrapeVarietiesSection = () => {
 
 const Container = styled.section`
   padding: 5rem 1rem;
-  background: white;
+  background: #f0ece6;
 
   @media (max-width: 768px) {
     padding: 3rem 1rem;
@@ -139,12 +139,10 @@ const GrapeGrid = styled.div`
 `;
 
 const GrapeCard = styled.div`
-  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  background: #f0ece6;
   padding: 2rem 1.5rem;
   border-radius: 12px;
   text-align: center;
-  border: 1px solid #e5e7eb;
-  transition: all 0.3s ease;
 
   @media (max-width: 768px) {
     padding: 1.5rem 1rem;

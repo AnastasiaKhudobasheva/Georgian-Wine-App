@@ -51,7 +51,6 @@ const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  font-family: system-ui, -apple-system, sans-serif;
 `;
 
 const Headline = styled.h1`

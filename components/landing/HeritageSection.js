@@ -30,7 +30,7 @@ const HeritageSection = () => {
 
 const Container = styled.section`
   padding: 5rem 1rem;
-  background: white;
+  background: #f0ece6;
 
   @media (max-width: 768px) {
     padding: 3rem 1rem;

@@ -82,7 +82,6 @@ const Container = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  font-family: system-ui, -apple-system, sans-serif;
 `;
 
 const BackButton = styled(Link)`
