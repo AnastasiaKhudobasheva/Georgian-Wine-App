@@ -187,6 +187,7 @@ const CTAButtons = styled.div`
 `;
 
 const PrimaryCTA = styled(Link)`
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -194,7 +195,7 @@ const PrimaryCTA = styled(Link)`
   background: linear-gradient(135deg, #944710 0%, #b8560d 100%);
   color: white;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 350;
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -208,18 +209,19 @@ const PrimaryCTA = styled(Link)`
 
   @media (max-width: 768px) {
     padding: 0.875rem 2rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     width: 280px;
   }
 
   @media (max-width: 480px) {
     padding: 0.75rem 1.5rem;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     width: 240px;
   }
 `;
 
 const SecondaryCTA = styled(Link)`
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -227,7 +229,7 @@ const SecondaryCTA = styled(Link)`
   background: linear-gradient(135deg, #944710 0%, #b8560d 100%);
   color: white;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 350;
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -240,13 +242,13 @@ const SecondaryCTA = styled(Link)`
 
   @media (max-width: 768px) {
     padding: 0.875rem 2rem;
-    font-size: 0%.8;
+    font-size: 0.9rem;
     width: 280px;
   }
 
   @media (max-width: 480px) {
     padding: 0.75rem 1.5rem;
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     width: 240px;
   }
 `;

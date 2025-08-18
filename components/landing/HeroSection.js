@@ -15,7 +15,7 @@ const HeroSection = () => {
           Where ancient qvevri vessels meet indigenous grapes to create wines
           that tell the story of a nation&rsquo;s soul
         </Tagline>
-        <CTAButton href="/wines">Explore Our Collection</CTAButton>
+        <CTAButton href="/wines">Explore Our Wine Collection</CTAButton>
       </BottomLeftContent>
     </Container>
   );
@@ -133,8 +133,7 @@ const Tagline = styled.p`
 `;
 
 const CTAButton = styled(Link)`
-  font-family: "League Spartan", sans-serif;
-  font-weight: 100;
+  font-weight: 350;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
@@ -143,7 +142,6 @@ const CTAButton = styled(Link)`
   background: linear-gradient(135deg, #944710 0%, #b8560d 100%);
   color: white;
   font-size: 1rem;
-  font-weight: 600;
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -161,7 +159,7 @@ const CTAButton = styled(Link)`
 
   @media (max-width: 768px) {
     padding: 0.875rem 2rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-left: -1rem;
   }
 

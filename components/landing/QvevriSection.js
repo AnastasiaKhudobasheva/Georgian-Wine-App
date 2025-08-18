@@ -177,20 +177,18 @@ const Story = styled.p`
 const UNESCOBadge = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
   background: white;
-  padding: 1.5rem 1rem;
-  border-radius: 7px;
-  border: 2px solid #e5e7eb;
+  padding: 1.1rem 1rem;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 0;
 
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 0.75rem;
     padding: 1.25rem 1.5rem;
     text-align: center;
+    margin: 0 auto; /* Keep centered on mobile */
   }
 
   @media (max-width: 480px) {
