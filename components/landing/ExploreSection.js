@@ -71,8 +71,12 @@ const BerlinConnection = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.5rem;
+
   color: #374151;
   margin: 0 0 2rem 0;
   line-height: 1.2;
@@ -88,9 +92,11 @@ const SectionTitle = styled.h2`
 `;
 
 const Story = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.25rem;
   color: #4b5563;
-  line-height: 1.7;
   margin: 0 0 1.5rem 0;
   text-align: left;
 
@@ -127,8 +133,11 @@ const CallToAction = styled.div`
 `;
 
 const CTATitle = styled.h3`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: 2rem;
-  font-weight: 600;
   color: #4b5563;
   margin: 0 0 1.5rem 0;
   line-height: 1.3;
@@ -144,9 +153,11 @@ const CTATitle = styled.h3`
 `;
 
 const CTADescription = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
   color: #4b5563;
-  line-height: 1.6;
   margin: 0 0 2.5rem 0;
 
   @media (max-width: 768px) {
@@ -161,6 +172,9 @@ const CTADescription = styled.p`
 `;
 
 const CTAButtons = styled.div`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -241,6 +255,9 @@ const SecondaryCTA = styled(Link)`
 `;
 
 const FooterNote = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1rem;
   color: #4b5563;
   margin: 0;

@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
     const sommelierChoice = await SommelierChoice.findOne({ slug }).populate(
       "wineId"
-    );
+    ); // getting info for ONE specific wine (object in our model)
 
     if (!sommelierChoice) {
       return res.status(404).json({ error: "Sommelier selection not found" });

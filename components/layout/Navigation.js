@@ -36,8 +36,11 @@ const NavContent = styled.div`
 
 const NavBrand = styled.div`
   a {
-    font-size: 1.5rem;
+    font-family: "Space Grotesk", sans-serif;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
     color: #944710;
     text-decoration: none;
 
@@ -48,6 +51,10 @@ const NavBrand = styled.div`
 `;
 
 const NavLinks = styled.div`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   display: flex;
   gap: 3rem;
   margin-right: auto;
@@ -56,10 +63,13 @@ const NavLinks = styled.div`
 `;
 
 const NavLink = styled(Link)`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: #6b7280;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: color 0.2s ease;
 
   &:hover {

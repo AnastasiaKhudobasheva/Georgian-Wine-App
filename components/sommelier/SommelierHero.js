@@ -89,11 +89,13 @@ const HeroContent = styled.div`
 `;
 
 const WineName = styled.h1`
-  font-size: 3.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 3.5rem;
   margin: 0 0 1rem 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -101,8 +103,10 @@ const WineName = styled.h1`
 `;
 
 const SommelierTagline = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.5rem;
-  font-style: italic;
   margin: 0 0 0.5rem 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   opacity: 0.95;
@@ -113,8 +117,10 @@ const SommelierTagline = styled.p`
 `;
 
 const SommelierName = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
-  font-weight: 500;
   margin: 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   opacity: 0.9;

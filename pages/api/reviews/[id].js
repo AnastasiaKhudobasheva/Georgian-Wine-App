@@ -6,11 +6,11 @@ import Review from "@/db/models/Review";
 export default async function handler(req, res) {
   await dbConnect();
 
-  const { id } = req.query;
+  const { id } = req.query; // review ID from URL
 
   if (req.method === "PUT") {
     try {
-      const { name, review } = req.body;
+      const { name, review } = req.body; // New data from form
 
       if (!name || !review) {
         return res.status(400).json({

@@ -30,7 +30,7 @@ const WinemakerWines = ({ wines, winemakerName }) => {
         ))}
       </WinesGrid>
 
-      <ViewAllButton href="/wines">View All Georgian Wines</ViewAllButton>
+      <ViewAllButton href="/wines">Explore All Georgian Wines</ViewAllButton>
     </WinesContainer>
   );
 };
@@ -42,12 +42,14 @@ const WinesContainer = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.5rem;
   color: #8b4513;
   text-align: center;
   margin: 0 0 0.5rem 0;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -55,12 +57,13 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionSubtitle = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
   color: #6b7280;
   text-align: center;
   margin: 0 0 3rem 0;
-  font-style: italic;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     margin-bottom: 2rem;
@@ -81,6 +84,9 @@ const WinesGrid = styled.div`
 `;
 
 const ViewAllButton = styled(Link)`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -88,7 +94,6 @@ const ViewAllButton = styled(Link)`
   background: #944710;
   color: white;
   border-radius: 8px;
-  font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(148, 71, 16, 0.2);
@@ -118,6 +123,9 @@ const EmptyState = styled.div`
 `;
 
 const EmptyText = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   color: #6b7280;
   font-size: 1.125rem;
   margin: 0 0 2rem 0;
@@ -125,6 +133,9 @@ const EmptyText = styled.p`
 `;
 
 const BackToCollectionButton = styled(Link)`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -132,7 +143,6 @@ const BackToCollectionButton = styled(Link)`
   background: #944710;
   color: white;
   border-radius: 8px;
-  font-weight: 600;
   text-decoration: none;
   transition: all 0.2s ease;
 

@@ -45,8 +45,11 @@ const Content = styled.div`
 `;
 
 const Headline = styled.h1`
-  font-size: 3.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 3.5rem;
   color: white;
   line-height: 1.1;
   margin: 0 0 1.5rem 0;
@@ -64,15 +67,17 @@ const Headline = styled.h1`
 
   @media (max-width: 480px) {
     font-size: 1.875rem;
+    letter-spacing: 0.05rem;
   }
 `;
 
 const Tagline = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.375rem;
   color: #f8f9fa;
-  line-height: 1.6;
   margin: 0 0 2.5rem 0;
-  font-weight: 400;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -91,6 +96,9 @@ const Tagline = styled.p`
 `;
 
 const CTAButton = styled(Link)`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;

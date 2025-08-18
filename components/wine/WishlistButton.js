@@ -63,6 +63,9 @@ const WishlistButton = ({ wineId }) => {
 };
 
 const HeartButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   background: white;
   border: 1px solid ${(props) => (props.$isInWishlist ? "#944710" : "#944710")};
   border-radius: 6px;

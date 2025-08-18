@@ -12,6 +12,7 @@ export default async function handler(req, res) {
     await dbConnect();
 
     const winemaker = await Winemaker.findOne({ slug }).populate("wines");
+    // getting info for ALL wines from this winemaker (array of objects in our model)
 
     if (!winemaker) {
       return res.status(404).json({ error: "Winemaker not found" });

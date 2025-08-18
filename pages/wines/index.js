@@ -163,8 +163,11 @@ const ResultsHeader = styled.div`
 `;
 
 const MainTitle = styled.h1`
-  font-size: 2.25rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.25rem;
   color: #374151;
   text-align: center;
   margin: 0 0 1rem 0;
@@ -177,11 +180,13 @@ const MainTitle = styled.h1`
 `;
 
 const FilterStatus = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   text-align: center;
   color: #6b7280;
   font-size: 1rem;
   margin: 0;
-  font-weight: 500;
 
   @media (max-width: 768px) {
     font-size: 0.875rem;
@@ -213,20 +218,24 @@ const ResultsFooter = styled.div`
 `;
 
 const WineCount = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   color: #6b7280;
   font-size: 1rem;
   margin: 0;
-  font-weight: 500;
   @media (max-width: 768px) {
     font-size: 0.875rem;
   }
 `;
 
 const ClearLink = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   background: none;
   border: none;
   color: #944710;
-  font-weight: 500;
   cursor: pointer;
   text-decoration: underline;
 
@@ -247,16 +256,21 @@ const EmptyIcon = styled.div`
 `;
 
 const EmptyTitle = styled.h3`
-  font-size: 1.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
   color: #374151;
   margin: 0 0 1rem 0;
 `;
 
 const EmptyMessage = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
   color: #6b7280;
-  line-height: 1.6;
   margin: 0 0 2rem 0;
   max-width: 400px;
   margin-left: auto;
@@ -264,12 +278,14 @@ const EmptyMessage = styled.p`
 `;
 
 const ClearFiltersButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   padding: 0.75rem 2rem;
   background: #944710;
   color: white;
   border: none;
   border-radius: 6px;
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
 

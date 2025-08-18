@@ -25,12 +25,14 @@ const InterviewContainer = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.5rem;
   color: #8b4513;
   text-align: center;
   margin: 0 0 0.5rem 0;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -38,12 +40,13 @@ const SectionTitle = styled.h2`
 `;
 
 const InterviewSubtitle = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
   color: #6b7280;
   text-align: center;
   margin: 0 0 3rem 0;
-  font-style: italic;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     margin-bottom: 2rem;
@@ -73,11 +76,13 @@ const InterviewItem = styled.div`
 `;
 
 const Question = styled.h3`
-  font-size: 1.25rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.25rem;
   color: #8b4513;
   margin: 0 0 1rem 0;
-  font-family: "Georgia", serif;
   line-height: 1.4;
 
   /* add Q: prefix for visual clarity */
@@ -93,16 +98,12 @@ const Question = styled.h3`
 `;
 
 const Answer = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
-  line-height: 1.7;
   color: #374151;
   margin: 0;
-
-  /* GEORGIAN STYLE FONTS */
-  font-family: "Georgia", serif;
-  font-weight: 400;
-  font-style: italic;
-
   position: relative;
   padding-left: 1.5rem;
 
@@ -114,8 +115,9 @@ const Answer = styled.p`
     position: absolute;
     left: 0;
     top: -0.25rem;
-    font-family: "Georgia", serif;
-    font-weight: 700;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 300;
+    line-height: 1.1;
     opacity: 0.6;
   }
 
@@ -124,14 +126,15 @@ const Answer = styled.p`
     font-size: 2rem;
     color: #944710;
     margin-left: 0.25rem;
-    font-family: "Georgia", serif;
-    font-weight: 700;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 300;
+    line-height: 1.1;
     opacity: 0.6;
   }
 
   @media (max-width: 768px) {
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.1;
     padding-left: 1rem;
 
     &::before {

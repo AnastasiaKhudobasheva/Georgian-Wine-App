@@ -41,9 +41,11 @@ const Spinner = styled.div`
 `;
 
 const LoadingText = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
   color: #6b7280;
-  font-weight: 500;
   margin: 0;
 `;
 
@@ -81,21 +83,29 @@ const ErrorIcon = styled.div`
 `;
 
 const ErrorTitle = styled.h1`
-  font-size: 2rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2rem;
   color: #374151;
   margin: 0 0 1rem 0;
   line-height: 1.2;
 `;
 
 const ErrorText = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
   color: #6b7280;
-  line-height: 1.6;
   margin: 0 0 2rem 0;
 `;
 
 const ActionButton = styled(Link)`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;

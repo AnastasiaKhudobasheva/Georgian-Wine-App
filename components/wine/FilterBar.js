@@ -147,6 +147,9 @@ const FilterBar = ({
 };
 
 const MobileFilterButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -235,13 +238,19 @@ const MobileHeader = styled.div`
 `;
 
 const FilterHeaderTitle = styled.h3`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: 1.25rem;
-  font-weight: 600;
   color: #374151;
   margin: 0;
 `;
 
 const CloseButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   background: none;
   border: none;
   color: #6b7280;
@@ -270,11 +279,12 @@ const FilterSection = styled.div`
 `;
 
 const FilterTitle = styled.h4`
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #944710;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
+  color: #944710;
   margin: 0 0 0.75rem 0;
 `;
 
@@ -307,6 +317,9 @@ const CheckboxLabel = styled.span`
 `;
 
 const ClearButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 0.5rem;

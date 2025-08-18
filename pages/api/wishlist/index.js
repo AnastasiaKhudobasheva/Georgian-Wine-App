@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const wishlistItems = await Wishlist.find({})
-        .populate("wineId") // full wine data, not just ID
+        .populate("wineId") // full wine data for this wine ID
         .sort({ createdAt: -1 }); // newest favorites first
 
       // extract just the wine data

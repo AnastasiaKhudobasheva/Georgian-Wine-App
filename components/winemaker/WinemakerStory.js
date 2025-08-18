@@ -17,11 +17,9 @@ const StoryContainer = styled.div`
 
 const SectionTitle = styled.h2`
   font-size: 2.5rem;
-  font-weight: 700;
   color: #8b4513;
   text-align: center;
   margin: 0 0 2rem 0;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -30,11 +28,10 @@ const SectionTitle = styled.h2`
 `;
 
 const StoryContent = styled.div`
-  font-size: 1.25rem;
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.2;
   color: #374151;
   text-align: justify;
-  font-family: "Georgia", serif;
 
   /* style paragraphs within the story */
   p {
@@ -52,12 +49,11 @@ const StoryContent = styled.div`
     line-height: 3rem;
     padding-right: 0.5rem;
     color: #944710;
-    font-family: "Georgia", serif;
   }
 
   @media (max-width: 768px) {
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: 0.9rem;
+    line-height: 1.2;
     text-align: left;
 
     &::first-letter {

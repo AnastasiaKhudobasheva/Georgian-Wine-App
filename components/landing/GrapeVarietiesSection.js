@@ -68,8 +68,11 @@ const Content = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.5rem;
   color: #374151;
   margin: 0 0 2rem 0;
   line-height: 1.2;
@@ -85,9 +88,11 @@ const SectionTitle = styled.h2`
 `;
 
 const Story = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.25rem;
   color: #4b5563;
-  line-height: 1.7;
   margin: 0 0 1.5rem 0;
   text-align: left;
   max-width: 800px;
@@ -160,8 +165,11 @@ const GrapeEmoji = styled.div`
 `;
 
 const GrapeName = styled.h3`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: 1.5rem;
-  font-weight: 600;
   color: #374151;
   margin: 0 0 1rem 0;
 
@@ -172,9 +180,11 @@ const GrapeName = styled.h3`
 `;
 
 const GrapeDescription = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1rem;
   color: #6b7280;
-  line-height: 1.6;
   margin: 0;
 
   @media (max-width: 768px) {

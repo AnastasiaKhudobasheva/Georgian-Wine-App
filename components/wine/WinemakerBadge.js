@@ -24,10 +24,11 @@ const RibbonContainer = styled.div`
 `;
 
 const RibbonText = styled.div`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 400;
   background: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #b8860b 100%);
   color: #8b4513;
   font-size: 0.625rem;
-  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 0.5rem 0.25rem 0.5rem 1rem; //changing the ribbon lenght

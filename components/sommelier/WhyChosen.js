@@ -16,12 +16,14 @@ const WhyChosenContainer = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.5rem;
   color: #2c3e50;
   text-align: center;
   margin: 0 0 2rem 0;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -30,11 +32,12 @@ const SectionTitle = styled.h2`
 `;
 
 const WhyChosenContent = styled.div`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.25rem;
-  line-height: 1.8;
   color: #374151;
   text-align: justify;
-  font-family: "Georgia", serif;
 
   /* style paragraphs within the content */
   p {
@@ -47,13 +50,14 @@ const WhyChosenContent = styled.div`
 
   /* first letter (like winemaker story) */
   &::first-letter {
+    font-family: "League Spartan", sans-serif;
+
     font-size: 4rem;
     font-weight: 700;
     float: left;
     line-height: 3rem;
     padding-right: 0.5rem;
     color: #2c3e50;
-    font-family: "Georgia", serif;
   }
 
   @media (max-width: 768px) {
