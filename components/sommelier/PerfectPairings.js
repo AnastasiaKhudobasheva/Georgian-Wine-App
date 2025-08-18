@@ -79,9 +79,9 @@ const DishName = styled.h3`
 
 const PairingDescription = styled.p`
   font-family: "League Spartan", sans-serif;
-  font-weight: 300;
+  font-weight: 350;
   line-height: 1.1;
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   line-height: 1.1;
   color: #64748b;
   margin: 0;

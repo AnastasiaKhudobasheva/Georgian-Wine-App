@@ -100,8 +100,8 @@ const Question = styled.h3`
 const Answer = styled.p`
   font-family: "League Spartan", sans-serif;
   font-weight: 300;
-  line-height: 1.1;
-  font-size: 1.125rem;
+  line-height: 1.2;
+  font-size: 1rem;
   color: #374151;
   margin: 0;
   position: relative;
@@ -133,8 +133,8 @@ const Answer = styled.p`
   }
 
   @media (max-width: 768px) {
-    font-size: 1rem;
-    line-height: 1.1;
+    font-size: 0.9rem;
+    line-height: 1.2;
     padding-left: 1rem;
 
     &::before {

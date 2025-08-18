@@ -32,10 +32,9 @@ const SectionTitle = styled.h2`
 `;
 
 const WhyChosenContent = styled.div`
-  font-family: "League Spartan", sans-serif;
-  font-weight: 300;
+  font-weight: 350;
   line-height: 1.1;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #374151;
   text-align: justify;
 
@@ -61,8 +60,8 @@ const WhyChosenContent = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.1;
     text-align: left;
 
     &::first-letter {

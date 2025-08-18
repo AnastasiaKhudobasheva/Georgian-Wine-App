@@ -83,10 +83,9 @@ const QuoteIcon = styled.span`
 `;
 
 const NotesText = styled.div`
-  font-family: "League Spartan", sans-serif;
-  font-weight: 300;
+  font-weight: 350;
   line-height: 1.1;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: #374151;
   text-align: center;
   margin: 1rem 0;
@@ -102,7 +101,7 @@ const NotesText = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.125rem;
+    font-size: 1rem;
     line-height: 1.1;
   }
 `;
