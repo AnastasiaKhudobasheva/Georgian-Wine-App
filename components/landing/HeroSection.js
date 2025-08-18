@@ -4,94 +4,124 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <Container>
-      <Content>
-        <Headline>Discover 8.000 Years of Georgian Wine Tradition</Headline>
+      <CenterContent>
+        <HeadlineContainer>
+          <Headline>8.000 years OF Georgian WINE Tradition</Headline>
+        </HeadlineContainer>
+      </CenterContent>
+
+      <BottomLeftContent>
         <Tagline>
           Where ancient qvevri vessels meet indigenous grapes to create wines
           that tell the story of a nation&rsquo;s soul
         </Tagline>
         <CTAButton href="/wines">Explore Our Collection</CTAButton>
-      </Content>
+      </BottomLeftContent>
     </Container>
   );
 };
 
 const Container = styled.section`
-  min-height: 80vh;
+  min-height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  margin: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
+  justify-content: space-between; /* Space between center and bottom */
   background: linear-gradient(
       135deg,
-      rgba(52, 58, 64, 0.7) 0%,
-      rgba(73, 80, 87, 0.6) 50%,
+      rgba(97, 104, 111, 0.7) 0%,
+      rgba(73, 80, 87, 0.6) 20%,
       rgba(148, 71, 16, 0.5) 100%
     ),
-    url("https://wineinternationalassociation.org/wp-content/uploads/2023/11/Georgia-image-1024x576.jpg")
-      center/cover no-repeat;
-  padding: 4rem 1rem;
+    url("https://i.imgur.com/vyDbf52.jpeg") center/cover no-repeat;
+  padding: 4rem 2rem 2rem 4rem;
   position: relative;
+  overflow: hidden; /* Prevents any scrollbars */
 
   @media (max-width: 768px) {
     min-height: 70vh;
-    padding: 3rem 1rem;
+    min-height: 100vh; /* Keep full height on mobile too */
+    padding: 3rem 1rem 1.5rem 1rem;
   }
 `;
 
-const Content = styled.div`
-  max-width: 800px;
+const CenterContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+`;
+
+const HeadlineContainer = styled.div`
+  max-width: 600px; /* Constrain width to force line breaks */
   text-align: center;
-  z-index: 2;
+
+  @media (max-width: 768px) {
+    max-width: 300px; /* Even narrower on mobile */
+  }
+
+  @media (max-width: 480px) {
+    max-width: 250px;
+  }
+`;
+
+const BottomLeftContent = styled.div`
+  align-self: flex-start;
+  max-width: 600px;
 `;
 
 const Headline = styled.h1`
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2px;
-  font-size: 3.5rem;
+  text-align: center;
+  font-size: 5rem;
   color: white;
-  line-height: 1.1;
-  margin: 0 0 1.5rem 0;
-  letter-spacing: -0.02em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+  margin: -3rem 0 1.5rem 0;
+  letter-spacing: -0.5px;
 
   @media (max-width: 1024px) {
-    font-size: 3rem;
+    font-size: 4rem;
   }
 
   @media (max-width: 768px) {
-    font-size: 2.25rem;
-    margin: 0 0 1rem 0;
+    font-size: 3.25rem;
+    margin: -10rem 0 1rem 0;
   }
 
   @media (max-width: 480px) {
-    font-size: 1.875rem;
+    font-size: 2.3rem;
     letter-spacing: 0.05rem;
   }
 `;
 
 const Tagline = styled.p`
   font-family: "League Spartan", sans-serif;
-  font-weight: 300;
-  line-height: 1.1;
-  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1;
+  font-size: 1.175rem;
   color: #f8f9fa;
   margin: 0 0 2.5rem 0;
-  max-width: 700px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2.5rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-align: left;
 
   @media (max-width: 768px) {
     font-size: 1.125rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-right: 3rem;
   }
 
   @media (max-width: 480px) {
     font-size: 1rem;
     margin-bottom: 1.5rem;
+    margin-right: 3rem;
   }
 `;
 
@@ -105,7 +135,7 @@ const CTAButton = styled(Link)`
   padding: 1rem 2.5rem;
   background: linear-gradient(135deg, #944710 0%, #b8560d 100%);
   color: white;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   border-radius: 8px;

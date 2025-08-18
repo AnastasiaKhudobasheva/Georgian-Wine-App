@@ -17,7 +17,7 @@ const QvevriSection = () => {
 
         <TextContent>
           <HeaderContainer>
-            <SectionTitle>The Qvevri Magic</SectionTitle>
+            <SectionTitle>the QVEVRI MAGIC</SectionTitle>
           </HeaderContainer>
 
           <BottomContent>
@@ -137,6 +137,7 @@ const SectionTitle = styled.h2`
   margin: 0 0 2rem 0;
   line-height: 1.5;
   text-align: center;
+  text-transform: none;
 
   @media (max-width: 768px) {
     font-size: 2rem;
