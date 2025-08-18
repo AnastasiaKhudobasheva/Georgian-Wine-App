@@ -4,7 +4,11 @@ const GrapeVarietiesSection = () => {
   return (
     <Container>
       <Content>
-        <SectionTitle>Unique Grape Varieties</SectionTitle>
+        <SectionTitle>
+          UNIQUE
+          <br /> grape
+          <br /> VARIETIES
+        </SectionTitle>
         <Story>
           Georgia is home to over 500 indigenous grape varieties found nowhere
           else on Earth. From the bold, spicy Saperavi that paints your glass
@@ -62,20 +66,19 @@ const Container = styled.section`
 `;
 
 const Content = styled.div`
-  max-width: 1000px;
+  max-width: 600px;
   margin: 0 auto;
   text-align: center;
 `;
 
 const SectionTitle = styled.h2`
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 1px;
-  font-size: 2.5rem;
+  font-size: 3.7rem;
   color: #374151;
-  margin: 0 0 2rem 0;
-  line-height: 1.2;
+  margin: 0 0 5rem 0;
+  line-height: 1.5;
+  text-align: center;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -88,10 +91,9 @@ const SectionTitle = styled.h2`
 `;
 
 const Story = styled.p`
-  font-family: "League Spartan", sans-serif;
-  font-weight: 300;
+  font-weight: 350;
   line-height: 1.1;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #4b5563;
   margin: 0 0 1.5rem 0;
   text-align: left;
@@ -105,8 +107,8 @@ const Story = styled.p`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.1;
     margin-bottom: 1.25rem;
 
     &:last-of-type {
@@ -127,7 +129,8 @@ const Story = styled.p`
 const GrapeGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -142,12 +145,6 @@ const GrapeCard = styled.div`
   text-align: center;
   border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(148, 71, 16, 0.15);
-    border-color: #944710;
-  }
 
   @media (max-width: 768px) {
     padding: 1.5rem 1rem;
@@ -165,30 +162,25 @@ const GrapeEmoji = styled.div`
 `;
 
 const GrapeName = styled.h3`
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #374151;
   margin: 0 0 1rem 0;
 
   @media (max-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     margin: 0 0 0.75rem 0;
   }
 `;
 
 const GrapeDescription = styled.p`
-  font-family: "League Spartan", sans-serif;
-  font-weight: 300;
   line-height: 1.1;
   font-size: 1rem;
   color: #6b7280;
   margin: 0;
 
   @media (max-width: 768px) {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
   }
 `;
 

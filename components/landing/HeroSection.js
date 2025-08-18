@@ -25,18 +25,18 @@ const Container = styled.section`
   min-height: 100vh; /* Full viewport height */
   width: 100vw; /* Full viewport width */
   margin: 0;
+  padding: 0;
   display: flex;
   /* align-items: center; */
   flex-direction: column;
   justify-content: space-between; /* Space between center and bottom */
   background: linear-gradient(
       135deg,
-      rgba(97, 104, 111, 0.7) 0%,
+      rgba(107, 119, 132, 0.7) 0%,
       rgba(73, 80, 87, 0.6) 20%,
       rgba(148, 71, 16, 0.5) 100%
     ),
     url("https://i.imgur.com/vyDbf52.jpeg") center/cover no-repeat;
-  padding: 4rem 2rem 2rem 4rem;
   position: relative;
   overflow: hidden; /* Prevents any scrollbars */
 
@@ -52,6 +52,7 @@ const CenterContent = styled.div`
   justify-content: center;
   align-items: center;
   flex: 1;
+  padding: 2rem; /* padding for content spacing */
 `;
 
 const HeadlineContainer = styled.div`
@@ -69,7 +70,12 @@ const HeadlineContainer = styled.div`
 
 const BottomLeftContent = styled.div`
   align-self: flex-start;
-  max-width: 600px;
+  max-width: 800px;
+  padding: 2rem; /* padding for content spacing */
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem 1.5rem 1rem;
+  }
 `;
 
 const Headline = styled.h1`
@@ -81,7 +87,7 @@ const Headline = styled.h1`
   font-size: 5rem;
   color: white;
   line-height: 1.4;
-  margin: -3rem 0 1.5rem 0;
+  margin: -7rem 0 1.5rem 0;
   letter-spacing: -0.5px;
 
   @media (max-width: 1024px) {
@@ -90,7 +96,7 @@ const Headline = styled.h1`
 
   @media (max-width: 768px) {
     font-size: 3.25rem;
-    margin: -10rem 0 1rem 0;
+    margin: -11rem 0 1rem 0;
   }
 
   @media (max-width: 480px) {
@@ -106,22 +112,23 @@ const Tagline = styled.p`
   font-size: 1.175rem;
   color: #f8f9fa;
   margin: 0 0 2.5rem 0;
-  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   text-align: left;
 
   @media (max-width: 768px) {
     font-size: 1.125rem;
     margin-bottom: 3rem;
     margin-right: 3rem;
+    margin-left: -1rem;
   }
 
   @media (max-width: 480px) {
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     margin-right: 3rem;
+    margin-left: -1rem;
   }
 `;
 
@@ -155,11 +162,14 @@ const CTAButton = styled(Link)`
   @media (max-width: 768px) {
     padding: 0.875rem 2rem;
     font-size: 1rem;
+    margin-left: -1rem;
   }
 
   @media (max-width: 480px) {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
+    margin-bottom: 6rem;
+    margin-left: -1rem;
   }
 `;
 

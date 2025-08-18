@@ -6,7 +6,9 @@ const ExploreSection = () => {
     <Container>
       <Content>
         <BerlinConnection>
-          <SectionTitle>From Marani to Berlin</SectionTitle>
+          <SectionTitle>
+            FROM <br /> Marani <br /> TO BERLIN
+          </SectionTitle>
           <Story>
             Our passion for Georgian wine led us to 8000 Vintages,
             Berlin&rsquo;s authentic Georgian wine sanctuary. Here, tradition
@@ -57,7 +59,7 @@ const Container = styled.section`
 `;
 
 const Content = styled.div`
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   text-align: center;
 `;
@@ -71,19 +73,16 @@ const BerlinConnection = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 1px;
-  font-size: 2.5rem;
-
+  font-size: 3.7rem;
   color: #374151;
-  margin: 0 0 2rem 0;
-  line-height: 1.2;
+  margin: 0 0 5rem 0;
+  line-height: 1.5;
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 3rem 0;
   }
 
   @media (max-width: 480px) {
@@ -92,10 +91,9 @@ const SectionTitle = styled.h2`
 `;
 
 const Story = styled.p`
-  font-family: "League Spartan", sans-serif;
-  font-weight: 300;
+  font-weight: 350;
   line-height: 1.1;
-  font-size: 1.25rem;
+  font-size: 1rem;
   color: #4b5563;
   margin: 0 0 1.5rem 0;
   text-align: left;
@@ -105,8 +103,8 @@ const Story = styled.p`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.1;
     margin: 0 0 1.25rem 0;
   }
 
@@ -137,18 +135,18 @@ const CTATitle = styled.h3`
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: #4b5563;
   margin: 0 0 1.5rem 0;
   line-height: 1.3;
 
   @media (max-width: 768px) {
-    font-size: 1.75rem;
+    font-size: 1.4rem;
     margin: 0 0 1.25rem 0;
   }
 
   @media (max-width: 480px) {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 `;
 
@@ -156,7 +154,7 @@ const CTADescription = styled.p`
   font-family: "League Spartan", sans-serif;
   font-weight: 300;
   line-height: 1.1;
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: #4b5563;
   margin: 0 0 2.5rem 0;
 
@@ -195,7 +193,7 @@ const PrimaryCTA = styled(Link)`
   padding: 1rem 2.5rem;
   background: linear-gradient(135deg, #944710 0%, #b8560d 100%);
   color: white;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   border-radius: 8px;
@@ -210,13 +208,13 @@ const PrimaryCTA = styled(Link)`
 
   @media (max-width: 768px) {
     padding: 0.875rem 2rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     width: 280px;
   }
 
   @media (max-width: 480px) {
     padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     width: 240px;
   }
 `;
@@ -228,11 +226,10 @@ const SecondaryCTA = styled(Link)`
   padding: 1rem 2.5rem;
   background: linear-gradient(135deg, #944710 0%, #b8560d 100%);
   color: white;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   border-radius: 8px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
 
   &:hover {
@@ -243,13 +240,13 @@ const SecondaryCTA = styled(Link)`
 
   @media (max-width: 768px) {
     padding: 0.875rem 2rem;
-    font-size: 1rem;
+    font-size: 0%.8;
     width: 280px;
   }
 
   @media (max-width: 480px) {
     padding: 0.75rem 1.5rem;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     width: 240px;
   }
 `;

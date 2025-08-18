@@ -10,7 +10,6 @@ const QvevriSection = () => {
             src="https://i.imgur.com/PDxQgUo.jpeg"
             alt="Traditional Georgian qvevri wine"
             fill
-            style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </ImageContainer>
@@ -22,7 +21,7 @@ const QvevriSection = () => {
 
           <BottomContent>
             <Story>
-              Meet the qvevri — Georgia&rsquo;s secret weapon. These egg-shaped
+              Meet the qvevri - Georgia&rsquo;s secret weapon. These egg-shaped
               clay vessels, buried underground in family marani, create wines
               unlike anything you&rsquo;ve ever tasted. UNESCO recognized this
               ancient technique as a world heritage treasure, but for Georgians,
@@ -52,11 +51,10 @@ const QvevriSection = () => {
 };
 
 const Container = styled.section`
-  padding: 0; /* no padding for full-width layout */
-  /* background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); */
+  padding: 2rem 1rem;
 
   @media (max-width: 768px) {
-    padding: 3rem 1rem;
+    padding: 1rem 1rem;
   }
 `;
 
@@ -96,13 +94,7 @@ const ImageContainer = styled.div`
 `;
 
 const QvevriImage = styled(Image)`
-  style= {
-     {
-       {
-        objectfit: "contain";
-      }
-    }
-  }
+  object-fit: cover;
 `;
 
 const HeaderContainer = styled.div`
@@ -132,16 +124,17 @@ const TextContent = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 4.4rem;
+  font-size: 3.7rem;
+  letter-spacing: 1px;
   color: #374151;
-  margin: 0 0 2rem 0;
+  margin: 0 0 5rem 0;
   line-height: 1.5;
   text-align: center;
   text-transform: none;
 
   @media (max-width: 768px) {
     font-size: 2rem;
-    margin: 0 0 1.5rem 0;
+    margin: 2rem 0 3rem 0;
   }
 
   @media (max-width: 480px) {
@@ -162,8 +155,8 @@ const Story = styled.p`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.1;
     margin: 0 0 1.25rem 0;
 
     &:last-of-type {
@@ -187,9 +180,8 @@ const UNESCOBadge = styled.div`
   justify-content: center;
   gap: 1rem;
   background: white;
-  padding: 1.5rem 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 1rem;
+  border-radius: 7px;
   border: 2px solid #e5e7eb;
   max-width: 400px;
   margin: 0 auto;
