@@ -40,9 +40,13 @@ const NavBrand = styled.div`
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #944710;
     text-decoration: none;
+
+    @media (min-width: 768px) {
+      font-size: 1.3rem; // larger on desktop
+    }
 
     &:hover {
       color: #7a3a0d;
@@ -69,8 +73,12 @@ const NavLink = styled(Link)`
   letter-spacing: 1px;
   color: #6b7280;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   transition: color 0.2s ease;
+
+  @media (min-width: 768px) {
+    font-size: 1rem; // larger for desktop
+  }
 
   &:hover {
     color: #944710;
