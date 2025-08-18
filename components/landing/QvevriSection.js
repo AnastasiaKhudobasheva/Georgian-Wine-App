@@ -109,6 +109,7 @@ const BottomContent = styled.div`
 `;
 
 const TextContent = styled.div`
+  max-width: 600px;
   text-align: left;
   padding: 5rem 3rem 0 3rem; /* Add padding inside text area */
   display: flex;
@@ -182,6 +183,7 @@ const UNESCOBadge = styled.div`
   padding: 1.1rem 1rem;
   max-width: 400px;
   margin: 0;
+  margin-left: -1.2rem; /* Offset the parent container's left padding */
 
   @media (max-width: 768px) {
     flex-direction: column;
