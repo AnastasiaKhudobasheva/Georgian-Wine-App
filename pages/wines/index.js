@@ -13,25 +13,28 @@ import {
 } from "@/lib/filterUtils";
 
 const HomePage = () => {
-  // starts empty
+  // FILTER STATE management: starts empty
   const [filters, setFilters] = useState(clearAllFilters());
 
-  // SWR URL based on current filters
+  // SWR URL based on current filters: dynamic wine selection
   const apiUrl = buildAPIUrl(filters);
 
   // fetch wines with SWR, instant filtering
   const { data: wines, error, isLoading } = useSWR(apiUrl);
 
-  // handle checkbox filter changes
+  // handle checkbox filter changes (update filter state and URL)
+  // Works with ONE Array
   const handleFilterChange = (filterType, value) => {
-    const newFilterArray = toggleFilterValue(filters[filterType], value);
+    const newFilterArray = toggleFilterValue(filters[filterType], value); // add/remove value from array
     setFilters((prev) => ({
-      ...prev,
-      [filterType]: newFilterArray,
+      // MANUAL state building
+      ...prev, // Keep everything else
+      [filterType]: newFilterArray, // Update just this category
     }));
   };
 
-  // handle tag clicks
+  // handle tag clicks (from wine cards)
+  // Works with ENTIRE Filter Object
   const handleTagClick = (filterType, value) => {
     const newFilters = setFilterValue(filters, filterType, value);
     setFilters(newFilters);
@@ -39,7 +42,7 @@ const HomePage = () => {
 
   // handle clear all filters
   const handleClearFilters = () => {
-    setFilters(clearAllFilters());
+    setFilters(clearAllFilters()); // COMPLETE object replacement
   };
 
   // any filters are active check
@@ -47,6 +50,7 @@ const HomePage = () => {
 
   // active filter count for display
   const activeFilterCount = Object.values(filters).reduce(
+    //goes through each filter category and adds up the total selections!
     (count, filterArray) => {
       return count + (Array.isArray(filterArray) ? filterArray.length : 0);
     },
@@ -75,9 +79,7 @@ const HomePage = () => {
             )}
           </ResultsHeader>
 
-          {isLoading && (
-            <Loading message="🍷 Discovering Georgian treasures..." />
-          )}
+          {isLoading && <Loading message="🍷 Discovering Georgian wines..." />}
 
           {error && (
             <ErrorMessage message="Connection issue! Please check your internet and try again." />
@@ -108,7 +110,7 @@ const HomePage = () => {
                     key={wine._id}
                     wine={wine}
                     activeFilters={filters}
-                    onTagClick={handleTagClick}
+                    onTagClick={handleTagClick} // Tag clicks flow back up
                   />
                 ))}
               </WineGrid>
@@ -139,7 +141,6 @@ const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  font-family: system-ui, -apple-system, sans-serif;
 `;
 
 const Layout = styled.div`
@@ -148,7 +149,7 @@ const Layout = styled.div`
   align-items: flex-start;
 
   @media (max-width: 767px) {
-    flex-direction: column;
+    flex-direction: column; // Stack vertically on mobile
     gap: 0;
   }
 `;
@@ -180,8 +181,6 @@ const MainTitle = styled.h1`
 `;
 
 const FilterStatus = styled.p`
-  font-family: "League Spartan", sans-serif;
-  font-weight: 300;
   line-height: 1.1;
   text-align: center;
   color: #6b7280;
@@ -218,8 +217,6 @@ const ResultsFooter = styled.div`
 `;
 
 const WineCount = styled.p`
-  font-family: "League Spartan", sans-serif;
-  font-weight: 300;
   line-height: 1.1;
   color: #6b7280;
   font-size: 1rem;
@@ -230,7 +227,6 @@ const WineCount = styled.p`
 `;
 
 const ClearLink = styled.button`
-  font-family: "League Spartan", sans-serif;
   font-weight: 100;
   text-transform: uppercase;
   background: none;
@@ -256,7 +252,6 @@ const EmptyIcon = styled.div`
 `;
 
 const EmptyTitle = styled.h3`
-  font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -266,8 +261,6 @@ const EmptyTitle = styled.h3`
 `;
 
 const EmptyMessage = styled.p`
-  font-family: "League Spartan", sans-serif;
-  font-weight: 300;
   line-height: 1.1;
   font-size: 1.125rem;
   color: #6b7280;
@@ -278,7 +271,6 @@ const EmptyMessage = styled.p`
 `;
 
 const ClearFiltersButton = styled.button`
-  font-family: "League Spartan", sans-serif;
   font-weight: 100;
   text-transform: uppercase;
   padding: 0.75rem 2rem;
