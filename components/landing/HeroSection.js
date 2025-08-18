@@ -96,7 +96,7 @@ const Headline = styled.h1`
 
   @media (max-width: 768px) {
     font-size: 3.25rem;
-    margin: -11rem 0 1rem 0;
+    margin: -7rem 0 1rem 0;
   }
 
   @media (max-width: 480px) {
@@ -166,7 +166,7 @@ const CTAButton = styled(Link)`
   @media (max-width: 480px) {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
     margin-left: -1rem;
   }
 `;

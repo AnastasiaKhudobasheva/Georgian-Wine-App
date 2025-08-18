@@ -76,12 +76,6 @@ const TipCard = styled.div`
   border: 2px solid #e2e8f0;
   transition: all 0.3s ease;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(44, 62, 80, 0.15);
-    border-color: #c0c0c0;
-  }
-
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
