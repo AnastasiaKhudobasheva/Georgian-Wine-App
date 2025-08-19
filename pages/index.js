@@ -19,7 +19,7 @@ const LandingPage = () => {
 
 const PageContainer = styled.div`
   min-height: 100vh;
-  font-family: system-ui, -apple-system, sans-serif;
+  background: #f0ece6;
 `;
 
 export default LandingPage;

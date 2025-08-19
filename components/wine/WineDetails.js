@@ -82,10 +82,12 @@ const Container = styled.div`
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  font-family: system-ui, -apple-system, sans-serif;
 `;
 
 const BackButton = styled(Link)`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -94,7 +96,6 @@ const BackButton = styled(Link)`
   color: #374151;
   border: 1px solid #944710;
   border-radius: 8px;
-  font-weight: 500;
   text-decoration: none;
   transition: all 0.2s ease;
   margin-bottom: 2rem;
@@ -143,8 +144,11 @@ const InfoSection = styled.div`
 `;
 
 const WineName = styled.h1`
-  font-size: 2.25rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.25rem;
   color: #374151;
   line-height: 1.2;
   margin: 0;
@@ -155,8 +159,11 @@ const WineName = styled.h1`
 `;
 
 const Winemaker = styled.h2`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: 1.25rem;
-  font-weight: 500;
   color: #6b7280;
   margin: 0;
 `;
@@ -221,8 +228,10 @@ const Price = styled.div`
 `;
 
 const Description = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
-  line-height: 1.7;
   color: #374151;
   margin: 0;
 `;

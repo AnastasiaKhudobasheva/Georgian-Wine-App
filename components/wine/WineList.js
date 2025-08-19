@@ -42,8 +42,11 @@ const Container = styled.div`
 `;
 
 const Headline = styled.h1`
-  font-size: 2.25rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.25rem;
   color: #374151;
   text-align: center;
   margin-bottom: 2.5rem;
@@ -51,12 +54,14 @@ const Headline = styled.h1`
 `;
 
 const Counter = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   text-align: center;
   color: #6b7280;
   font-size: 1rem;
   margin-top: 2rem;
   margin-bottom: 0;
-  font-weight: 500;
 `;
 
 const WineGrid = styled.div`

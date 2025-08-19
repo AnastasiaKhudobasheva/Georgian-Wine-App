@@ -42,12 +42,14 @@ const ServingTipsContainer = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.5rem;
   color: #2c3e50;
   text-align: center;
   margin: 0 0 2rem 0;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -74,12 +76,6 @@ const TipCard = styled.div`
   border: 2px solid #e2e8f0;
   transition: all 0.3s ease;
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(44, 62, 80, 0.15);
-    border-color: #c0c0c0;
-  }
-
   @media (max-width: 768px) {
     padding: 1.5rem;
   }
@@ -96,11 +92,13 @@ const TipIcon = styled.div`
 `;
 
 const TipTitle = styled.h3`
-  font-size: 1.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
   color: #2c3e50;
   margin: 0 0 1rem 0;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 1.25rem;
@@ -108,11 +106,11 @@ const TipTitle = styled.h3`
 `;
 
 const TipContent = styled.p`
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-weight: 350;
+  line-height: 1.1;
+  font-size: 1.1rem;
   color: #64748b;
   margin: 0;
-  font-weight: 500;
 
   @media (max-width: 768px) {
     font-size: 1rem;

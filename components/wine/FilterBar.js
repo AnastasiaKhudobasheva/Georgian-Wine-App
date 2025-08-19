@@ -3,42 +3,61 @@ import { useState } from "react";
 import { X, Filter } from "lucide-react";
 
 const FilterBar = ({
-  filters,
+  filters, // current filter state from parent
   onFilterChange,
   onClearFilters,
   hasActiveFilters,
 }) => {
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
-  // filter options
+  // HARDCODED FILTER OPTIONS
   const filterOptions = {
     regions: ["Kakheti", "Imereti", "Kartli"],
     grapes: [
       "Rkatsiteli",
       "Saperavi",
       "Kisi",
+      "Mtsvane",
       "Tsitska",
       "Tsolikauri",
       "Krakhuna",
+      "Goruli Mtsvane",
+      "Kakhuri Mtsvane",
     ],
-    winemakers: ["Ori Marani", "Ethno", "Baia's Wine", "Orgo", "Gio's Marani"],
+    winemakers: [
+      "Ori Marani",
+      "Ethno",
+      "Baia's Wine",
+      "Orgo",
+      "Gio's Marani",
+      "Nanatri",
+      "Two Sisters",
+      "Simoneti",
+      "Binekhi",
+    ],
     technologies: ["Qvevri", "Oak Barrel", "Pet-Nat"],
     years: [2024, 2023, 2022, 2021, 2020],
   };
 
+  // for checkbox clicks
+
   const handleCheckboxChange = (filterType, value) => {
-    onFilterChange(filterType, value);
+    onFilterChange(filterType, value); // call parent's filter function
   };
+
+  //reusable function for both desktop and mobile
 
   const FilterContent = () => (
     <FilterSections>
       <FilterSection>
         <FilterTitle>Region</FilterTitle>
         {filterOptions.regions.map((region) => (
+          // going through each region and creating a checkbox for it
           <CheckboxRow key={region}>
             <Checkbox
               type="checkbox"
               checked={filters.region?.includes?.(region)}
+              //If region filter exists, check if it includes this region, ? as safety to prevent crashes
               onChange={() => handleCheckboxChange("region", region)}
             />
             <CheckboxLabel>{region}</CheckboxLabel>
@@ -52,7 +71,7 @@ const FilterBar = ({
           <CheckboxRow key={grape}>
             <Checkbox
               type="checkbox"
-              checked={filters.grape.includes(grape)}
+              checked={filters.grape?.includes?.(grape)}
               onChange={() => handleCheckboxChange("grape", grape)}
             />
             <CheckboxLabel>{grape}</CheckboxLabel>
@@ -80,7 +99,7 @@ const FilterBar = ({
           <CheckboxRow key={tech}>
             <Checkbox
               type="checkbox"
-              checked={filters.technology.includes(tech)}
+              checked={filters.technology?.includes?.(tech)} //Check if this region is selected
               onChange={() => handleCheckboxChange("technology", tech)}
             />
             <CheckboxLabel>{tech}</CheckboxLabel>
@@ -94,7 +113,7 @@ const FilterBar = ({
           <CheckboxRow key={year}>
             <Checkbox
               type="checkbox"
-              checked={filters.year.includes(year)}
+              checked={filters.year?.includes?.(year)}
               onChange={() => handleCheckboxChange("year", year)}
             />
             <CheckboxLabel>{year}</CheckboxLabel>
@@ -128,9 +147,10 @@ const FilterBar = ({
         <FilterContent />
       </DesktopFilterBar>
 
-      {/* MOBILE: Overlay */}
+      {/* MOBILE: Modal Overlay */}
       {mobileFilterOpen && (
         <MobileOverlay>
+          {/* MobileOverlay = Only show popup IF it's open */}
           <MobileFilterPanel>
             <MobileHeader>
               <FilterHeaderTitle>Filter Wines</FilterHeaderTitle>
@@ -147,6 +167,9 @@ const FilterBar = ({
 };
 
 const MobileFilterButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -161,7 +184,7 @@ const MobileFilterButton = styled.button`
   margin-bottom: 1rem;
 
   @media (min-width: 768px) {
-    display: none;
+    display: none; //hide on desktop
   }
 
   &:hover {
@@ -181,7 +204,8 @@ const ActiveDot = styled.div`
 
 const DesktopFilterBar = styled.div`
   display: none;
-  width: 280px;
+  width: 100%; // responsive grid to adjust autmatically
+  max-width: 280px; //prevents from getting too wide
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
@@ -189,10 +213,14 @@ const DesktopFilterBar = styled.div`
   height: fit-content;
   position: sticky;
   top: 2rem;
-  margin-top: 8.6rem; /* match WineList top margin */
+  margin-top: 4.6rem; /* match WineList top margin */
 
   @media (min-width: 768px) {
-    display: block;
+    display: block; //show on desktop
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 240px; // slightly smaller on medium screens
   }
 `;
 
@@ -235,13 +263,19 @@ const MobileHeader = styled.div`
 `;
 
 const FilterHeaderTitle = styled.h3`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: 1.25rem;
-  font-weight: 600;
   color: #374151;
   margin: 0;
 `;
 
 const CloseButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   background: none;
   border: none;
   color: #6b7280;
@@ -270,11 +304,12 @@ const FilterSection = styled.div`
 `;
 
 const FilterTitle = styled.h4`
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #944710;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 1px;
+  font-size: 0.875rem;
+  color: #944710;
   margin: 0 0 0.75rem 0;
 `;
 
@@ -307,6 +342,9 @@ const CheckboxLabel = styled.span`
 `;
 
 const ClearButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 0.5rem;

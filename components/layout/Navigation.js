@@ -19,7 +19,7 @@ const Navigation = () => {
 };
 
 const NavContainer = styled.nav`
-  background: white;
+  background: #f0ece6;
   border-bottom: 1px solid #e5e7eb;
   padding: 1rem 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -36,10 +36,17 @@ const NavContent = styled.div`
 
 const NavBrand = styled.div`
   a {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
     color: #944710;
     text-decoration: none;
+
+    @media (min-width: 768px) {
+      font-size: 1.3rem; // larger on desktop
+    }
 
     &:hover {
       color: #7a3a0d;
@@ -48,6 +55,10 @@ const NavBrand = styled.div`
 `;
 
 const NavLinks = styled.div`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   display: flex;
   gap: 3rem;
   margin-right: auto;
@@ -56,11 +67,18 @@ const NavLinks = styled.div`
 `;
 
 const NavLink = styled(Link)`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: #6b7280;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.8rem;
   transition: color 0.2s ease;
+
+  @media (min-width: 768px) {
+    font-size: 1rem; // larger for desktop
+  }
 
   &:hover {
     color: #944710;

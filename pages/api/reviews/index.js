@@ -16,7 +16,7 @@ export default async function handler(req, res) {
       res.status(500).json({ error: "Failed to fetch reviews" });
     }
   } else if (req.method === "POST") {
-    const { wineId, name, review } = req.body;
+    const { wineId, name, review } = req.body; // fields from the form
 
     try {
       // Validation

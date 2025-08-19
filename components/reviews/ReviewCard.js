@@ -18,7 +18,7 @@ const ReviewCard = ({ review, onReviewUpdate, onReviewDelete }) => {
 
   // handle edit form submission (pass data up)
   const handleEditSubmit = async (formData) => {
-    await onReviewUpdate(review._id, formData);
+    await onReviewUpdate(review._id, formData); // call parent's update function
     setIsEditing(false); // switch back to display mode
   };
 
@@ -29,12 +29,12 @@ const ReviewCard = ({ review, onReviewUpdate, onReviewDelete }) => {
   // handle delete confirmation
   const handleDeleteConfirm = async () => {
     setIsDeleting(true);
-    await onReviewDelete(review._id);
+    await onReviewDelete(review._id); // call parent's delete function
     setIsDeleting(false);
     setShowDeleteConfirm(false); // hide confirmation after deletion
   };
 
-  // if editing, show form instead of review display
+  // // EDIT MODE: if editing, show form instead of review display
   if (isEditing) {
     return (
       <ReviewForm
@@ -49,6 +49,7 @@ const ReviewCard = ({ review, onReviewUpdate, onReviewDelete }) => {
 
   return (
     <ReviewContainer>
+      {/* DISPLAY MODE: Show review content */}
       <ReviewHeader>
         <ReviewerName>{review.name}</ReviewerName>
         <ReviewActions>
@@ -61,6 +62,7 @@ const ReviewCard = ({ review, onReviewUpdate, onReviewDelete }) => {
       </ReviewHeader>
       <ReviewText>{review.review}</ReviewText>
 
+      {/* DELETE CONFIRMATION */}
       {showDeleteConfirm && (
         <ConfirmationSection>
           <ConfirmationText>
@@ -111,8 +113,11 @@ const ReviewHeader = styled.div`
 `;
 
 const ReviewerName = styled.h4`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: 1rem;
-  font-weight: 600;
   color: #944710;
   margin: 0;
 `;
@@ -124,8 +129,10 @@ const ReviewDate = styled.span`
 `;
 
 const ReviewText = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1rem;
-  line-height: 1.6;
   color: #374151;
   margin: 0;
 `;
@@ -137,6 +144,9 @@ const ReviewActions = styled.div`
 `;
 
 const EditButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   background: none;
   border: 1px solid #d1d5db;
   border-radius: 4px;
@@ -154,6 +164,9 @@ const EditButton = styled.button`
 `;
 
 const DeleteButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   background: none;
   border: 1px solid #ef4444;
   border-radius: 4px;
@@ -179,18 +192,26 @@ const ConfirmationSection = styled.div`
 `;
 
 const ConfirmationText = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   margin: 0 0 1rem 0;
   font-size: 0.875rem;
   color: #991b1b;
-  line-height: 1.4;
 `;
 
 const ConfirmationButtons = styled.div`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: flex;
   gap: 0.75rem;
 `;
 
 const ConfirmCancelButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   padding: 0.5rem 1rem;
   background: white;
   border: 1px solid #d1d5db;
@@ -207,6 +228,9 @@ const ConfirmCancelButton = styled.button`
 `;
 
 const ConfirmDeleteButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   padding: 0.5rem 1rem;
   background: #ef4444;
   border: 1px solid #ef4444;

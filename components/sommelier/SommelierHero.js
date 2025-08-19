@@ -19,9 +19,14 @@ const SommelierHero = ({ sommelierChoice }) => {
       </HeroBackground>
 
       <HeroContent>
-        <WineName>{wine.name}</WineName>
-        <SommelierTagline>{sommelierChoice.tagline}</SommelierTagline>
-        <SommelierName>— {sommelierChoice.sommelierName}</SommelierName>
+        <CenteredWineName>
+          <WineName>{wine.name}</WineName>
+        </CenteredWineName>
+
+        <BottomLeftContent>
+          <SommelierTagline>{sommelierChoice.tagline}</SommelierTagline>
+          <SommelierName>— {sommelierChoice.sommelierName}</SommelierName>
+        </BottomLeftContent>
       </HeroContent>
     </HeroContainer>
   );
@@ -42,6 +47,24 @@ const HeroContainer = styled.div`
     min-height: 300px;
     border-radius: 12px;
     margin-bottom: 2rem;
+  }
+`;
+
+const CenteredWineName = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1; /* Takes available space to center the wine name */
+`;
+
+const BottomLeftContent = styled.div`
+  align-self: flex-start; /* Align to left */
+  margin-left: -1rem; /* Closer to left edge */
+  margin-bottom: -1.5rem; /* Close to bottom */
+
+  @media (max-width: 768px) {
+    margin-left: 0rem;
+    margin-bottom: -1rem;
   }
 `;
 
@@ -81,7 +104,9 @@ const HeroContent = styled.div`
   right: 0;
   padding: 3rem;
   color: white;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Take full height to distribute content */
 
   @media (max-width: 768px) {
     padding: 2rem 1rem;
@@ -89,11 +114,12 @@ const HeroContent = styled.div`
 `;
 
 const WineName = styled.h1`
+  letter-spacing: 1px;
+  text-align: center;
   font-size: 3.5rem;
-  font-weight: 700;
-  margin: 0 0 1rem 0;
+  max-width: 600px;
+  margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -101,27 +127,31 @@ const WineName = styled.h1`
 `;
 
 const SommelierTagline = styled.p`
-  font-size: 1.5rem;
-  font-style: italic;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  font-size: 1.2rem;
   margin: 0 0 0.5rem 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   opacity: 0.95;
 
   @media (max-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 `;
 
 const SommelierName = styled.p`
-  font-size: 1.125rem;
-  font-weight: 500;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
+  font-size: 1rem;
   margin: 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   opacity: 0.9;
   color: #c0c0c0;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 `;
 

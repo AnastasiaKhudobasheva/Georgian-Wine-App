@@ -22,7 +22,7 @@ const ReviewList = ({ wineId }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          wineId, // wineId from component scope
+          wineId, // wineId from component props
           ...formData, // SPREAD: name and review from form
         }),
       });
@@ -110,19 +110,22 @@ const ReviewList = ({ wineId }) => {
           <ReviewCount>
             {reviews.length} review{reviews.length !== 1 ? "s" : ""}
           </ReviewCount>
+
+          {/* DISPLAY: Show reviews */}
           <ReviewContainer>
             {reviews.map((review) => (
               <ReviewCard
                 key={review._id}
                 review={review}
-                onReviewUpdate={handleReviewUpdate}
-                onReviewDelete={handleReviewDelete}
+                onReviewUpdate={handleReviewUpdate} // Pass update function to child comp
+                onReviewDelete={handleReviewDelete} // Pass delete function to child comp
               />
             ))}
           </ReviewContainer>
         </>
       )}
 
+      {/* CREATE: Show form or add button */}
       {showForm ? (
         <FormWrapper>
           <ReviewForm onSubmit={handleFormSubmit} onCancel={handleFormCancel} />
@@ -148,17 +151,22 @@ const ReviewSection = styled.section`
 `;
 
 const SectionTitle = styled.h3`
-  font-size: 1.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.5rem;
   color: #374151;
   margin: 0 0 0.5rem 0;
 `;
 
 const ReviewCount = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 0.875rem;
   color: #6b7280;
   margin: 0 0 2rem 0;
-  font-weight: 500;
 `;
 
 const ReviewContainer = styled.div`
@@ -179,15 +187,20 @@ const EmptyIcon = styled.div`
 `;
 
 const EmptyMessage = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 1.125rem;
   color: #6b7280;
-  line-height: 1.6;
   margin: 0;
   max-width: 400px;
   margin: 0 auto;
 `;
 
 const AddReviewButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: block;
   margin: 2rem auto;
   padding: 0.75rem 2rem;

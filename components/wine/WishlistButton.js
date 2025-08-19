@@ -39,6 +39,7 @@ const WishlistButton = ({ wineId }) => {
           toast.success("Added to wishlist! ❤️");
           mutate();
         } else {
+          mutate(wishlist, false); // rollback to original state if fetching fails bc we already performed optimistic update
           toast.error("Failed to add to wishlist");
         }
       }
@@ -63,6 +64,9 @@ const WishlistButton = ({ wineId }) => {
 };
 
 const HeartButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   background: white;
   border: 1px solid ${(props) => (props.$isInWishlist ? "#944710" : "#944710")};
   border-radius: 6px;

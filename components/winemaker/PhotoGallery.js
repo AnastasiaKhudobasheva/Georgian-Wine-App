@@ -51,12 +51,14 @@ const GalleryContainer = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.5rem;
   color: #8b4513;
   text-align: center;
   margin: 0 0 2rem 0;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -140,6 +142,9 @@ const ModalContent = styled.div`
 `;
 
 const CloseButton = styled.button`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   position: absolute;
   top: 1rem;
   right: 1rem;

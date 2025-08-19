@@ -3,7 +3,6 @@ import useSWR from "swr";
 import WineDetails from "@/components/wine/WineDetails";
 import { Loading, ErrorMessage } from "@/components/ui/LoadingAndError";
 import ReviewList from "@/components/reviews/ReviewList";
-import ReviewForm from "@/components/reviews/ReviewForm";
 
 export default function WineDetailsPage() {
   const router = useRouter();
@@ -11,7 +10,7 @@ export default function WineDetailsPage() {
   const { slug } = router.query;
 
   const {
-    data: wine,
+    data: wine, // Rename 'data' to 'wine'
     isLoading,
     error,
   } = useSWR(isReady ? `/api/wines/${slug}` : null);

@@ -36,6 +36,7 @@ const ReviewForm = ({
     setIsSubmitting(true);
 
     await onSubmit({
+      // Call parent's submit function
       name: name.trim(),
       review: review.trim(),
     });
@@ -103,8 +104,11 @@ const FormContainer = styled.div`
 `;
 
 const FormTitle = styled.h3`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   font-size: 1.25rem;
-  font-weight: 600;
   color: #374151;
   margin: 0 0 1.5rem 0;
 `;
@@ -155,6 +159,9 @@ const CharacterCounter = styled.div`
 `;
 
 const ButtonGroup = styled.div`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   display: flex;
   gap: 1rem;
   justify-content: flex-end;

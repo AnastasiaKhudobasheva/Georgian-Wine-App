@@ -7,7 +7,7 @@ const TastingNotes = ({ tastingNotes }) => {
       <NotesCard>
         <QuoteIcon>&ldquo;</QuoteIcon>
         <NotesText>{tastingNotes}</NotesText>
-        <QuoteIcon closing>&rdquo;</QuoteIcon>
+        <QuoteIcon $closing={true}>&rdquo;</QuoteIcon>
       </NotesCard>
     </TastingNotesContainer>
   );
@@ -20,12 +20,14 @@ const TastingNotesContainer = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 2.5rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 2.5rem;
   color: #2c3e50;
   text-align: center;
   margin: 0 0 2rem 0;
-  font-family: "Georgia", serif;
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -47,15 +49,15 @@ const NotesCard = styled.div`
 `;
 
 const QuoteIcon = styled.span`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   font-size: 4rem;
   color: #c0c0c0;
-  font-family: "Georgia", serif;
-  font-weight: 700;
-  line-height: 1;
   position: absolute;
 
   ${(props) =>
-    props.closing
+    props.$closing
       ? `
     bottom: 1rem;
     right: 2rem;
@@ -68,7 +70,7 @@ const QuoteIcon = styled.span`
   @media (max-width: 768px) {
     font-size: 3rem;
     ${(props) =>
-      props.closing
+      props.$closing
         ? `
       bottom: 0.5rem;
       right: 1rem;
@@ -81,13 +83,11 @@ const QuoteIcon = styled.span`
 `;
 
 const NotesText = styled.div`
-  font-size: 1.25rem;
-  line-height: 1.8;
+  font-weight: 350;
+  line-height: 1.1;
+  font-size: 1.1rem;
   color: #374151;
-  font-family: "Georgia", serif; /* Same as winemaker interviews */
-  font-weight: 400;
   text-align: center;
-  font-style: italic;
   margin: 1rem 0;
   position: relative;
   padding: 0 1.5rem;
@@ -101,8 +101,8 @@ const NotesText = styled.div`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.125rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.1;
   }
 `;
 

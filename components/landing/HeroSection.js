@@ -4,101 +4,144 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <Container>
-      <Content>
-        <Headline>Discover 8.000 Years of Georgian Wine Tradition</Headline>
+      <CenterContent>
+        <HeadlineContainer>
+          <Headline>8.000 years OF Georgian WINE Tradition</Headline>
+        </HeadlineContainer>
+      </CenterContent>
+
+      <BottomLeftContent>
         <Tagline>
           Where ancient qvevri vessels meet indigenous grapes to create wines
           that tell the story of a nation&rsquo;s soul
         </Tagline>
-        <CTAButton href="/wines">Explore Our Collection</CTAButton>
-      </Content>
+        <CTAButton href="/wines">Explore Our Wine Collection</CTAButton>
+      </BottomLeftContent>
     </Container>
   );
 };
 
 const Container = styled.section`
-  min-height: 80vh;
+  min-height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
+  justify-content: space-between; /* Space between center and bottom */
   background: linear-gradient(
       135deg,
-      rgba(52, 58, 64, 0.7) 0%,
-      rgba(73, 80, 87, 0.6) 50%,
+      rgba(107, 119, 132, 0.7) 0%,
+      rgba(73, 80, 87, 0.6) 20%,
       rgba(148, 71, 16, 0.5) 100%
     ),
-    url("https://wineinternationalassociation.org/wp-content/uploads/2023/11/Georgia-image-1024x576.jpg")
-      center/cover no-repeat;
-  padding: 4rem 1rem;
+    url("https://i.imgur.com/vyDbf52.jpeg") center/cover no-repeat;
   position: relative;
+  overflow: hidden; /* Prevents any scrollbars */
 
   @media (max-width: 768px) {
     min-height: 70vh;
-    padding: 3rem 1rem;
+    min-height: 100vh; /* Keep full height on mobile too */
+    padding: 3rem 1rem 1.5rem 1rem;
   }
 `;
 
-const Content = styled.div`
-  max-width: 800px;
+const CenterContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 2rem; /* padding for content spacing */
+`;
+
+const HeadlineContainer = styled.div`
+  max-width: 600px; /* Constrain width to force line breaks */
   text-align: center;
-  z-index: 2;
-`;
-
-const Headline = styled.h1`
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: white;
-  line-height: 1.1;
-  margin: 0 0 1.5rem 0;
-  letter-spacing: -0.02em;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
-  @media (max-width: 1024px) {
-    font-size: 3rem;
-  }
 
   @media (max-width: 768px) {
-    font-size: 2.25rem;
-    margin: 0 0 1rem 0;
+    max-width: 300px; /* Even narrower on mobile */
   }
 
   @media (max-width: 480px) {
-    font-size: 1.875rem;
+    max-width: 250px;
+  }
+`;
+
+const BottomLeftContent = styled.div`
+  align-self: flex-start;
+  max-width: 800px;
+  padding: 2rem; /* padding for content spacing */
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem 1.5rem 1rem;
+  }
+`;
+
+const Headline = styled.h1`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 2px;
+  text-align: center;
+  font-size: 5rem;
+  color: white;
+  line-height: 1.4;
+  margin: -7rem 0 1.5rem 0;
+  letter-spacing: -0.5px;
+
+  @media (max-width: 1024px) {
+    font-size: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 3.25rem;
+    margin: -7rem 0 1rem 0;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.3rem;
+    letter-spacing: 0.05rem;
   }
 `;
 
 const Tagline = styled.p`
-  font-size: 1.375rem;
-  color: #f8f9fa;
-  line-height: 1.6;
-  margin: 0 0 2.5rem 0;
+  font-family: "League Spartan", sans-serif;
   font-weight: 400;
-  max-width: 700px;
+  line-height: 1;
+  font-size: 1.175rem;
+  color: #f8f9fa;
+  margin: 0 0 2.5rem 0;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 2.5rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+  text-align: left;
 
   @media (max-width: 768px) {
     font-size: 1.125rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    margin-right: 3rem;
+    margin-left: -1rem;
   }
 
   @media (max-width: 480px) {
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    margin-right: 3rem;
+    margin-left: -1rem;
   }
 `;
 
 const CTAButton = styled(Link)`
+  font-weight: 350;
+  text-transform: uppercase;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 1rem 2.5rem;
   background: linear-gradient(135deg, #944710 0%, #b8560d 100%);
   color: white;
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 1rem;
   text-decoration: none;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -116,12 +159,15 @@ const CTAButton = styled(Link)`
 
   @media (max-width: 768px) {
     padding: 0.875rem 2rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    margin-left: -1rem;
   }
 
   @media (max-width: 480px) {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
+    margin-bottom: 4rem;
+    margin-left: -1rem;
   }
 `;
 

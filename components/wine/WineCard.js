@@ -149,21 +149,28 @@ const WineImage = styled(Image)`
 `;
 
 const WineInfo = styled.div`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   padding: 1rem;
+  padding-top: 6rem; //Extra space for heart
   flex: 1;
   display: flex;
   flex-direction: column;
 `;
 
 const WineName = styled.div`
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   display: block;
-  font-size: 1.125rem;
-  font-weight: 600;
+  font-size: 1.3rem;
   color: #374151;
   text-decoration: none;
   margin-bottom: 0.25rem;
   cursor: pointer;
-  line-height: 1.3;
 
   &:hover {
     color: #944710;
@@ -171,10 +178,12 @@ const WineName = styled.div`
 `;
 
 const Winemaker = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
   color: #6b7280;
   font-size: 0.875rem;
   margin: 0 0 0.75rem 0;
-  font-weight: 500;
 `;
 
 const GrapeContainer = styled.div`
@@ -197,6 +206,9 @@ const GrapeList = styled.div`
 `;
 
 const RegionYear = styled.p`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 300;
+  line-height: 1.1;
   color: #6b7280;
   font-size: 0.875rem;
   margin: 0 0 0.75rem 0;
@@ -210,16 +222,19 @@ const TechnologyContainer = styled.div`
 `;
 
 const Price = styled.div`
-  font-size: 1.25rem;
   font-weight: 700;
+  font-size: 1.25rem;
   color: #944710;
   text-align: right;
 `;
 
 const WishlistButtonContainer = styled.div`
+  font-family: "League Spartan", sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
   position: absolute;
-  top: -1rem;
-  right: -1.3rem;
+  top: 0.8rem;
+  right: 0.8rem;
   z-index: 10;
 `;
 
