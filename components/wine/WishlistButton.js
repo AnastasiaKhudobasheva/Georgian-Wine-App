@@ -39,6 +39,7 @@ const WishlistButton = ({ wineId }) => {
           toast.success("Added to wishlist! ❤️");
           mutate();
         } else {
+          mutate(wishlist, false); // rollback to original state if fetching fails bc we already performed optimistic update
           toast.error("Failed to add to wishlist");
         }
       }
